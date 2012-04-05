@@ -32,9 +32,6 @@ module SaxStream
           subject.start_element('foobar', [['a', 'b']])
         end
       end
-
-      context "for a relative child element" do
-      end
     end
   end
 end

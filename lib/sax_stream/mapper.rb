@@ -24,6 +24,7 @@ module SaxStream
       end
 
       def map_element_stack_top_onto_object(object, element_stack)
+        map_key_onto_object(object, element_stack.path, element_stack.content)
         element_stack.attributes.each do |key, value|
           map_key_onto_object(object, key, value)
         end

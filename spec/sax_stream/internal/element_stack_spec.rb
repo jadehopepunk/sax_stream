@@ -24,7 +24,7 @@ module SaxStream
       it "raises error if no element" do
         lambda {
           subject.attributes
-        }.should raise_error(ProgramError)
+        }.should raise_error
       end
 
       it "returns attributes on first element" do

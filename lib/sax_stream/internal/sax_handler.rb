@@ -10,7 +10,7 @@ module SaxStream
         @handler_stack = handler_stack
       end
 
-      [:start_element, :end_element].each do |key|
+      [:start_element, :end_element, :characters].each do |key|
         code = <<-RUBY
         def #{key}(*params)
           @handler_stack.top.#{key}(*params)

@@ -9,6 +9,7 @@ module SaxStream
         def initialize(name, attrs)
           @name = name
           @attrs = attrs
+          @content = nil
         end
 
         def attributes(prefix = nil)
@@ -16,6 +17,15 @@ module SaxStream
           @attrs.map do |key, value|
             ["#{prefix}/@#{key}", value]
           end
+        end
+
+        def content
+          @content
+        end
+
+        def record_characters(string)
+          @content ||= ''
+          @content += string
         end
       end
 
@@ -44,12 +54,16 @@ module SaxStream
         @elements.map(&:name).join('/')
       end
 
+      def content
+        @elements.last.content
+      end
+
       def attributes
-        if empty?
-          raise ProgramError, "cannot fetch attributes when there is no element on the stack"
-        else
-          @elements.last.attributes(path)
-        end
+        @elements.last.attributes(path)
+      end
+
+      def record_characters(string)
+        @elements.last.record_characters(string)
       end
     end
   end

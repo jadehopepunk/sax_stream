@@ -24,6 +24,12 @@ module SaxStream
         pop_element_stack(name) || end_current_object(name)
       end
 
+      def characters(string)
+        unless @element_stack.empty?
+          @element_stack.record_characters(string)
+        end
+      end
+
       def current_object
         @current_object
       end
@@ -32,7 +38,6 @@ module SaxStream
 
         def start_current_object(name, attrs)
           if maps_node?(name)
-            puts "started object #{name}"
             @current_object = @mapper_class.new
             attrs.each do |key, value|
               @mapper_class.map_attribute_onto_object(@current_object, key, value)
@@ -42,13 +47,11 @@ module SaxStream
         end
 
         def start_relative_child(name, attrs)
-          puts "started element #{name}"
           @element_stack.push(name, attrs)
         end
 
         def pop_element_stack(name)
           unless @element_stack.empty?
-            puts "ended element #{name}"
             raise ProgramError "received end element event for #{name.inspect} but currently processing #{@element_stack.top_name.inspect}" unless @element_stack.top_name == name
             @mapper_class.map_element_stack_top_onto_object(@current_object, @element_stack)
             @element_stack.pop
@@ -56,7 +59,6 @@ module SaxStream
         end
 
         def end_current_object(name)
-          puts "ended object #{name}"
           raise ProgramError unless @current_object
           raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.class.node_name.inspect}" unless @current_object.class.node_name == name
           @collector << @current_object
