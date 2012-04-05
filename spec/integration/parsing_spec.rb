@@ -18,7 +18,7 @@ describe "sax stream parser" do
     end
 
     it "builds the mapped object for the node and passes it to the collector" do
-      parser = SaxStream::Parser.new(collector => [Product])
+      parser = SaxStream::Parser.new(collector, [Product])
 
       parser.parse_stream(open_fixture(:simple_product))
 
@@ -53,7 +53,7 @@ describe "sax stream parser" do
     end
 
     it "builds the appropriate object for each node" do
-      parser = SaxStream::Parser.new(collector => [PropertyList])
+      parser = SaxStream::Parser.new(collector, [PropertyList])
 
       parser.parse_stream(open_fixture(:reaxml))
       raise collector.mapped_objects.inspect

@@ -6,8 +6,8 @@ module SaxStream
       attr_accessor :stack
 
       def initialize(mapper_class, collector, element_stack = ElementStack.new)
-        raise ArgumentError unless collector
-        raise ArgumentError unless mapper_class
+        raise ArgumentError, "no collector" unless collector
+        raise ArgumentError, "no mapper class" unless mapper_class
 
         @mapper_class = mapper_class
         @collector = collector
@@ -49,7 +49,7 @@ module SaxStream
         end
 
         def start_child_node(name, attrs)
-          handler = @mapper_class.child_handler_for(name)
+          handler = @mapper_class.child_handler_for(name, @collector)
           if handler
             @stack.push(handler)
             handler.start_element(name, attrs)

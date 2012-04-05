@@ -40,8 +40,8 @@ module SaxStream
         end
       end
 
-      def child_handler_for(name)
-        raise NotImplementedError
+      def child_handler_for(name, collector)
+        # raise NotImplementedError
       end
 
       private

@@ -48,13 +48,13 @@ In this example, Product is a mapping class. It maps to an xml node named "produ
 
 ### Run the parser
 
-The parser object must be supplied with a set of mapping classes to use. These are specified in a hash where the keys are the collector objects to use. You can specify as many mapping classes per collector as you like. You can have just one collector, or different ones for different mapping classes.
+The parser object must be supplied with a collector and an array of mapping classes to use.
 
 ```
 require 'sax_stream/parser'
 
 collector = SaxStream::NaiveCollector.new
-parser = SaxStream::Parser.new(collector => [Product])
+parser = SaxStream::Parser.new(collector, [Product])
 
 parser.parse_stream(File.open('products.xml'))
 ```

@@ -4,14 +4,12 @@ require 'sax_stream/internal/sax_handler'
 
 module SaxStream
   class Parser
-    def initialize(collector_mappers)
-      raise ArgumentError, "You must supply your parser with at least one collector and mapper class" if collector_mappers.empty?
-      mapper_handlers = []
-      collector_mappers.each do |collector, mappers|
-        mappers_array = mappers.is_a?(Enumerable) ? mappers : [mappers]
-        mappers_array.each do |mapper|
-          mapper_handlers << Internal::MapperHandler.new(mapper, collector)
-        end
+    def initialize(collector, mappers)
+      raise ArgumentError, "You must supply your parser with a collector" unless collector
+      raise ArgumentError, "You must supply your parser with at least one mapper class" if mappers.empty?
+
+      mapper_handlers = mappers.map do |mapper|
+        Internal::MapperHandler.new(mapper, collector)
       end
       @sax_handler = Internal::SaxHandler.new(mapper_handlers)
     end
