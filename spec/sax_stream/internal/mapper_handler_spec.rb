@@ -4,7 +4,7 @@ require 'sax_stream/internal/mapper_handler'
 module SaxStream
   describe Internal::MapperHandler do
     let(:new_mapped_object) { double("instance of mapper class") }
-    let(:mapper_class)      { double("mapper class", :new => new_mapped_object) }
+    let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :node_name => 'foobar') }
     let(:collector)         { double("collector") }
     let(:subject)           { Internal::MapperHandler.new(mapper_class, collector) }
 
@@ -22,13 +22,13 @@ module SaxStream
 
     context "start_element" do
       it "instantiates a mapped object" do
-        subject.start_element('client')
+        subject.start_element('foobar')
         subject.current_object.should == new_mapped_object
       end
 
       it "sets attributes on the mapped object" do
         mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
-        subject.start_element('client', [['a', 'b']])
+        subject.start_element('foobar', [['a', 'b']])
       end
     end
   end

@@ -14,6 +14,7 @@ module SaxStream
       end
 
       def start_element(name, attrs = [])
+        raise ArgumentError, "Received start element #{name.inspect} which I don't handle" unless maps_node?(name)
         @current_object = @mapper_class.new
         attrs.each do |key, value|
           @mapper_class.map_attribute_onto_object(@current_object, key, value)
@@ -22,7 +23,7 @@ module SaxStream
 
       def end_element(name)
         raise ProgramError unless @current_object
-        raise ArgumentError unless @current_object.class.node_name == name
+        raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.class.node_name.inspect}" unless @current_object.class.node_name == name
         @collector << @current_object
         @current_object = nil
       end

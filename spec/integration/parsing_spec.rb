@@ -24,6 +24,7 @@ describe "sax stream parser" do
       product.should be_a(Product)
       product['id'].should == '123'
       product['status'].should == 'new'
+      product['name'].should == 'iPhone 5G'
     end
   end
 end
