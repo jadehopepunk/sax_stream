@@ -23,6 +23,12 @@ module SaxStream
         map_key_onto_object(object, "@#{key}", value)
       end
 
+      def map_element_stack_top_onto_object(object, element_stack)
+        element_stack.attributes.each do |key, value|
+          map_key_onto_object(object, key, value)
+        end
+      end
+
       def map_key_onto_object(object, key, value)
         mapping = mappings[key]
         if mapping

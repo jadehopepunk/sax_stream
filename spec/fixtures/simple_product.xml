@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product id="123" status="new">
-  <name>iPhone 5G</name>
+  <name confirmed="yes">iPhone 5G</name>
 </product>

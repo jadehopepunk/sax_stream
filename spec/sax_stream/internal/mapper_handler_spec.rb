@@ -21,14 +21,19 @@ module SaxStream
     end
 
     context "start_element" do
-      it "instantiates a mapped object" do
-        subject.start_element('foobar')
-        subject.current_object.should == new_mapped_object
+      context "for main mapper class element" do
+        it "instantiates a mapped object" do
+          subject.start_element('foobar')
+          subject.current_object.should == new_mapped_object
+        end
+
+        it "sets attributes on the mapped object" do
+          mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
+          subject.start_element('foobar', [['a', 'b']])
+        end
       end
 
-      it "sets attributes on the mapped object" do
-        mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
-        subject.start_element('foobar', [['a', 'b']])
+      context "for a relative child element" do
       end
     end
   end

@@ -9,8 +9,10 @@ describe "sax stream parser" do
       include SaxStream::Mapper
 
       node 'product'
-      map :id,     :to => '@id'
-      map :status, :to => '@status'
+      map :id,             :to => '@id'
+      map :status,         :to => '@status'
+      map :name_confirmed, :to => 'name/@confirmed'
+      map :name,           :to => 'name'
     end
 
     it "builds the mapped object for the node and passes it to the collector" do
@@ -24,6 +26,7 @@ describe "sax stream parser" do
       product.should be_a(Product)
       product['id'].should == '123'
       product['status'].should == 'new'
+      product['name_confirmed'].should == 'yes'
       product['name'].should == 'iPhone 5G'
     end
   end
