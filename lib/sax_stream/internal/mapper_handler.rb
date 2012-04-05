@@ -3,13 +3,15 @@ require 'sax_stream/internal/element_stack'
 module SaxStream
   module Internal
     class MapperHandler
-      def initialize(mapper_class, collector)
+      attr_accessor :stack
+
+      def initialize(mapper_class, collector, element_stack = ElementStack.new)
         raise ArgumentError unless collector
         raise ArgumentError unless mapper_class
 
         @mapper_class = mapper_class
         @collector = collector
-        @element_stack = ElementStack.new
+        @element_stack = element_stack
       end
 
       def maps_node?(node_name)
@@ -17,7 +19,7 @@ module SaxStream
       end
 
       def start_element(name, attrs = [])
-        start_current_object(name, attrs) || start_relative_child(name, attrs)
+        start_current_object(name, attrs) || start_child_node(name, attrs) || start_child_data(name, attrs)
       end
 
       def end_element(name)
@@ -46,7 +48,17 @@ module SaxStream
           end
         end
 
-        def start_relative_child(name, attrs)
+        def start_child_node(name, attrs)
+          handler = @mapper_class.child_handler_for(name)
+          if handler
+            @stack.push(handler)
+            handler.start_element(name, attrs)
+            handler
+          end
+        end
+
+        def start_child_data(name, attrs)
+          raise ProgramError, "received child element #{name.inspect} before receiving main expected node #{@mapper_class.node_name.inspect}" unless current_object
           @element_stack.push(name, attrs)
         end
 

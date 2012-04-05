@@ -15,6 +15,9 @@ module SaxStream
         mappings[options[:to]] = Internal::FieldMapping.new(attribute_name, options)
       end
 
+      def children(attribute_name, options)
+      end
+
       def node_name
         @node_name
       end
@@ -34,9 +37,11 @@ module SaxStream
         mapping = mappings[key]
         if mapping
           mapping.map_value_onto_object(object, value)
-        else
-          raise UnexpectedAttribute, "Found unmapped attribute #{key.inspect} = #{value.inspect}"
         end
+      end
+
+      def child_handler_for(name)
+        raise NotImplementedError
       end
 
       private

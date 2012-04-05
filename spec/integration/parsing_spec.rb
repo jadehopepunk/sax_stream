@@ -4,6 +4,8 @@ require 'sax_stream/parser'
 require 'sax_stream/naive_collector'
 
 describe "sax stream parser" do
+  let(:collector) { SaxStream::NaiveCollector.new }
+
   context "with a single node file" do
     class Product
       include SaxStream::Mapper
@@ -16,7 +18,6 @@ describe "sax stream parser" do
     end
 
     it "builds the mapped object for the node and passes it to the collector" do
-      collector = SaxStream::NaiveCollector.new
       parser = SaxStream::Parser.new(collector => [Product])
 
       parser.parse_stream(open_fixture(:simple_product))
@@ -28,6 +29,34 @@ describe "sax stream parser" do
       product['status'].should == 'new'
       product['name_confirmed'].should == 'yes'
       product['name'].should == 'iPhone 5G'
+    end
+  end
+
+  context "with a complex list of different node types" do
+    class Business
+      include SaxStream::Mapper
+
+      node 'business'
+    end
+
+    class Residential
+      include SaxStream::Mapper
+
+      node 'residential'
+    end
+
+    class PropertyList
+      include SaxStream::Mapper
+
+      node 'propertyList'
+      children :properties, :as => [Business, Residential]
+    end
+
+    it "builds the appropriate object for each node" do
+      parser = SaxStream::Parser.new(collector => [PropertyList])
+
+      parser.parse_stream(open_fixture(:reaxml))
+      raise collector.mapped_objects.inspect
     end
   end
 end

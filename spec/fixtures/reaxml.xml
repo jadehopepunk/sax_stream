@@ -1,0 +1,1631 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE propertyList SYSTEM "http://www.listglobally.com/schemas/reaxml_extended.dtd">
+<propertyList date="2010-06-14-08:49:36" username="" password="">
+  <business modTime="2010-08-02-13:25" status="current">
+    <uniqueID>1780074</uniqueID>
+    <commercialListingType value="sale"/>
+    <underOffer value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>165125</agentID>
+      <name>Sonia Hume</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>sonia@desktop.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/2905-20060821jennifer.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">200000</price>
+    <priceView>$200,000</priceView>
+    <address display="no">
+      <streetNumber>123</streetNumber>
+      <street>Hay Street</street>
+      <suburb display="no">PERTH</suburb>
+      <state>WA</state>
+      <postcode>6000</postcode>
+    </address>
+    <businessCategory id="1">
+      <name>Industrial/Manufacturing</name>
+      <businessSubCategory>
+        <name>Welding</name>
+      </businessSubCategory>
+    </businessCategory>
+    <headline><![CDATA[Niks Place!]]></headline>
+    <description><![CDATA[Prime tavern for sale, full Liquor licence available!]]></description>
+    <landDetails>
+      <area unit="squareMeter">700</area>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter">469</area>
+    </buildingDetails>
+    <externalLink href=""/>
+    <images>
+      <img id="m" modTime="2007-11-02-10:25" url="http://www.perfect.ca.com.au/photos/12431-Sunset.jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </business>
+  <residential modTime="2010-06-09-09:15" status="current">
+    <uniqueID>1005913</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>158235</agentID>
+      <name>Adam Smith</name>
+      <telephone type="BH">0892260011</telephone>
+      <email>adamc@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/19442-baby.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">699000</price>
+    <priceView>$699,000</priceView>
+    <address display="yes">
+      <streetNumber>89</streetNumber>
+      <street>Beach Lane</street>
+      <suburb display="yes">PYRMONT</suburb>
+      <state>NSW</state>
+      <postcode>2009</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Fantastic Property..]]></headline>
+    <description><![CDATA[This property will impress. Located within the tranquil
+surroundings of parkland and close
+to the beach. Perfect for the whole family - within walking
+distance to Rose Catholic
+College.
+
+This home offers you lifestyle and value for money. With
+all the hard work done for you,
+all you have to do is sit back and watch your garden grow.
+Set back off the main road
+privacy is assured.
+
+
+
+
+
+
+
+
+
+
+
+
+]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>1</garages>
+      <carports>1</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),apple,banana</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter">500</area>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter">343</area>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/18388-10014-2-80robert-frt.jpg"/>
+      <img id="a" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/8233-family.jpg"/>
+      <img id="b" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/18619-25703-41hylakit.jpg"/>
+      <img id="c" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/1649-UpperLiving.jpg"/>
+      <img id="d" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/Original3488077.jpg"/>
+      <img id="e" modTime="2009-07-08-10:03" url="http://www.perfect.ca.com.au/photos/11847-garden"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-07-08:13" status="current">
+    <uniqueID>1618387</uniqueID>
+    <authority value="auction"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="no">820000</price>
+    <priceView>Auction</priceView>
+    <address display="yes">
+      <streetNumber>9</streetNumber>
+      <street>Bundall Road</street>
+      <suburb display="yes">ADELAIDE</suburb>
+      <state>SA</state>
+      <postcode>5000</postcode>
+    </address>
+    <category name="AcreageSemi-rural"/>
+    <headline><![CDATA[Just like being on holiday]]></headline>
+    <description><![CDATA[Inspect this fantastic property this weekend - you will not know why you didn't move
+sooner. Great for the kids; go fishing on the weekend and park your boat out the front.]]></description>
+    <features>
+      <bedrooms>3</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>1</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <auction date="2009-04-21-13:00"/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2008-04-08-12:17" url="http://www.perfect.ca.com.au/photos/15601-Ameryfront.jpg"/>
+      <img id="a" modTime="2008-04-08-12:17" url="http://www.perfect.ca.com.au/photos/14370-lounge.jpg"/>
+      <img id="b" modTime="2008-04-08-12:17" url="http://www.perfect.ca.com.au/photos/8233-family.jpg"/>
+      <img id="c" modTime="2008-04-08-12:17" url="http://www.perfect.ca.com.au/photos/golfcourse.gif"/>
+      <img id="d" modTime="2008-04-08-12:17" url="http://www.perfect.ca.com.au/photos/1233-FrangipaniFlowers.jpg"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <commercial modTime="2010-06-09-13:03" status="current">
+    <uniqueID>1984673</uniqueID>
+    <commercialAuthority value="forsale"/>
+    <commercialListingType value="sale"/>
+    <underOffer value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="yes">25000</price>
+    <priceView>$25,000</priceView>
+    <return period="annual" unit="percent">9</return>
+    <currentLeaseEndDate>2008-05-31-00:00:00</currentLeaseEndDate>
+    <tenancy>vacant</tenancy>
+    <address display="yes">
+      <streetNumber>25</streetNumber>
+      <street>Beresford Street</street>
+      <suburb display="yes">NEWCASTLE</suburb>
+      <state>NSW</state>
+      <postcode>2300</postcode>
+    </address>
+    <commercialCategory name="Offices" id="1"/>
+    <headline><![CDATA[City Office]]></headline>
+    <description><![CDATA[Great commercial unit offering a fantastic return.]]></description>
+    <landDetails>
+      <area unit="squareMeter">500</area>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter">250</area>
+    </buildingDetails>
+    <carSpaces>1</carSpaces>
+    <zone>2B</zone>
+    <externalLink href=""/>
+    <images>
+      <img id="m" modTime="2008-05-27-10:10" url="http://www.perfect.ca.com.au/photos/3859-RenderWeb.JPG"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </commercial>
+  <residential modTime="2010-06-10-07:35" status="current">
+    <uniqueID>2007939</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>165125</agentID>
+      <name>Sonia Hume</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>sonia@desktop.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/2905-20060821jennifer.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">1200000</price>
+    <priceView>$1,200,000</priceView>
+    <address display="yes">
+      <streetNumber>77</streetNumber>
+      <street>Pits Bend</street>
+      <suburb display="yes">BATHURST</suburb>
+      <state>NSW</state>
+      <postcode>2795</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Spectacular Home]]></headline>
+    <description><![CDATA[This will please even the most discerning of buyers.  Magnificent location up on Mt
+Panorama, overlooking the sleepy town of Bathurst.  With 5 bedrooms and 2 bathrooms this
+will keep the family very cosy and even those who drop by.  The stainless steel galley style
+kitchen will keep the chef cooking up a storm while the toys will be tinkered with out the
+back in the massive fully powered workshop.  The entertaining area under the gabled roof
+includes a bar area and magnificent 12 seater spa, the tropical garden is impressive and
+reticulated by a bore.]]></description>
+    <features>
+      <bedrooms>5</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>3</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>1</alarmSystem>
+      <pool>1</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter">1122</area>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter">367</area>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/25909-Peppers-Manor-House-Southern-Highlands-External.jpg"/>
+      <img id="a" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/1632-LowerLiving.jpg"/>
+      <img id="b" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/14243-patio.jpg"/>
+      <img id="c" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/17934-sea754DSCN0018.jpg"/>
+      <img id="d" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/18371-slide2.jpg"/>
+      <img id="e" modTime="2008-06-23-13:16" url="http://www.perfect.ca.com.au/photos/19187-tangier20property20al20houara.jpg"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-08-09:54" status="current">
+    <uniqueID>2011873</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="yes"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>158235</agentID>
+      <name>Adam Smith</name>
+      <telephone type="BH">0892260011</telephone>
+      <email>adamc@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/19442-baby.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">725000</price>
+    <priceView>$725,000</priceView>
+    <address display="yes">
+      <streetNumber>3/436</streetNumber>
+      <street>SANDGATE ROAD</street>
+      <suburb display="yes">CLAYFIELD</suburb>
+      <state>QLD</state>
+      <postcode>4011</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[CLAYFIELD MAGIC]]></headline>
+    <description><![CDATA[Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH Advertising BLAH BLAH BLAH ]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>2</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter">876</area>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2008-06-27-09:30" url="http://www.perfect.ca.com.au/photos/13296-bright.jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-09-08:28" status="current">
+    <uniqueID>2196422</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="yes"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="yes">400000</price>
+    <priceView>$400,000</priceView>
+    <address display="yes">
+      <streetNumber>74</streetNumber>
+      <street>Glenelg Road</street>
+      <suburb display="yes">ADELAIDE</suburb>
+      <state>SA</state>
+      <postcode>5000</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[buy now!]]></headline>
+    <description><![CDATA[buy now!]]></description>
+    <features>
+      <bedrooms>5</bedrooms>
+      <bathrooms>4</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes>
+      <inspection>19-Jun-2010 11:00AM to 11:45AM</inspection>
+      <inspection>26-Jun-2010 11:00AM to 11:45AM</inspection>
+    </inspectionTimes>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2010-05-13-12:32" url="http://www.perfect.ca.com.au/photos/16234-univers.jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-10-10:46" status="current">
+    <uniqueID>2209761</uniqueID>
+    <authority value="open"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>207987</agentID>
+      <name>Raymond Kuceli</name>
+      <telephone type="mobile">0413 949 569</telephone>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>raymond@madania.ae</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/31860-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="yes">425000</price>
+    <priceView>$425,000</priceView>
+    <address display="yes">
+      <streetNumber>101</streetNumber>
+      <street>Apple Street</street>
+      <suburb display="yes">ADELAIDE</suburb>
+      <state>SA</state>
+      <postcode>5000</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[uuuuuuuuuuu]]></headline>
+    <description><![CDATA[jjjjjjjjjjjjjjj]]></description>
+    <features>
+      <bedrooms>2</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>1</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-03-04-21:57" url="http://www.perfect.ca.com.au/photos/3520-bldg..jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-07-08:13" status="sold">
+    <uniqueID>1691880</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="yes">650000</price>
+    <priceView>$650,000-$680,000</priceView>
+    <address display="yes">
+      <streetNumber>36</streetNumber>
+      <street>Adair St</street>
+      <suburb display="yes">BALD HILLS</suburb>
+      <state>QLD</state>
+      <postcode>4036</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[HEADING FOR ADVERTISING]]></headline>
+    <description><![CDATA[Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah Advertising Blah Blah ]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>2</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="no" plusSAV="no">200000</price>
+      <date>2010-05-14-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2008-07-24-09:59" url="http://www.perfect.ca.com.au/photos/20840-bright.jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-07-08:14" status="sold">
+    <uniqueID>2007568901</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>209706</agentID>
+      <name>1 1</name>
+    </listingAgent>
+    <price display="yes">315000</price>
+    <priceView>$315,000</priceView>
+    <address display="yes">
+      <streetNumber>14</streetNumber>
+      <street>CULLEN STREET</street>
+      <suburb display="yes">BUNDABERG</suburb>
+      <state>QLD</state>
+      <postcode>4670</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[RENOVATED DOUBLE BRICK BEAUTY]]></headline>
+    <description><![CDATA[This home is all about the best of both worlds.
+The beauty of hard wearing, low maintenance double brick and the warm feeling of timber floors, big rooms and formal cornicing.
+Your new family friendly home is tasetfully renovated through out and it has the character and charm that you just have to share with your family and friends when you have your house warming.
+The kitchen is all about ease of use and functionality at meal times as it is also open plan with the dining room.
+There are 2 air conditioned lounge areas, as is the main and all bedrooms are built in and room enough for queen beds in all.
+In addition to the 3 bedrooms is the ideal office space, bright & airy with external windows.
+Car accomodation is provided by the double garage with workshop or third car space and it has great side access with no problems getting the boat or 4wd down the side.
+For your own inspection, call today as this is set to sell fast.
+
+Available 7 days
+Dion Taylor 0448 197 835 or 4151 3233
+dion@bundabergpropertygallery.com.au
+
+Vast experience selling- Lifestyle Properties, Residential Properties, Land Sales, Project Management and extensive marketing knowledge to get you results.
+]]></description>
+    <features>
+      <bedrooms>3</bedrooms>
+      <bathrooms>1</bathrooms>
+      <garages>3</garages>
+      <carports>0</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),Bath,Renovated</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="no" plusSAV="no">5000000</price>
+      <date>2009-05-05-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/48107062-7bf1-482e-89b1-16d980e59237_FS.JPG"/>
+      <img id="a" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/67c8ae79-9723-4124-861e-c7d4ad22924b_FS.JPG"/>
+      <img id="b" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/293a376f-7389-429c-a1a1-2cd09e98f3d1_FS.JPG"/>
+      <img id="c" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/73659c44-4e34-4745-b036-36c77238d442_FS.JPG"/>
+      <img id="d" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/863a4b62-0c2d-4c57-88a8-083ad0dc9469_FS.JPG"/>
+      <img id="e" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/4d08473a-71cf-4f0f-88e9-fd8bc4332d31_FS.JPG"/>
+      <img id="f" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/fea5b4b4-7672-4fa4-b7aa-660025513276_FS.JPG"/>
+      <img id="g" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/d6d16e19-a62f-4575-a2b5-9c42c97b0d70_FS.JPG"/>
+      <img id="h" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/7ce7b272-2be8-4cbf-ac8d-c69e09670e46_FS.JPG"/>
+      <img id="i" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/9a571b49-69e4-4903-a2a0-e740b1d7e8f7_FS.JPG"/>
+      <img id="j" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/6eca2d18-e5e3-458c-89b2-2304b50c1f56_FS.JPG"/>
+      <img id="k" modTime="2009-03-03-16:09" url="http://www.perfect.ca.com.au/photos/42989423-fca3-4f9e-84a3-c7c8ec004f18_FS.JPG"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-08-15:55" status="sold">
+    <uniqueID>2269032</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>197500</agentID>
+      <name>Scott Wulff</name>
+      <email>wulff@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/staffnoimage.gif</imageURL>
+    </listingAgent>
+    <price display="yes">500000</price>
+    <priceView>$500,000</priceView>
+    <address display="yes">
+      <streetNumber>3</streetNumber>
+      <street>Advertising</street>
+      <suburb display="yes">CARNARVON</suburb>
+      <state>WA</state>
+      <postcode>6701</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Advertising Testing]]></headline>
+    <description><![CDATA[Advertising Testing Again]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>1</garages>
+      <carports>1</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="no" plusSAV="no">450000</price>
+      <date>2010-06-08-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-03-15:58" status="sold">
+    <uniqueID>2419201</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>158235</agentID>
+      <name>Adam Smith</name>
+      <telephone type="BH">0892260011</telephone>
+      <email>adamc@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/19442-baby.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">360000</price>
+    <priceView>Contact Agent</priceView>
+    <address display="no">
+      <streetNumber>42</streetNumber>
+      <street>Triandra Court</street>
+      <suburb display="yes">BANJUP</suburb>
+      <state>WA</state>
+      <postcode>6164</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Brand New to Market]]></headline>
+    <description><![CDATA[This lovely home has a great entertaining area with a huge pool in the rear.
+
+Contact agent.]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>2</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>1</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),Pool, Alarm</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="no" plusSAV="no">420000</price>
+      <date>2009-09-23-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-09-22-13:33" url="http://www.perfect.ca.com.au/photos/16374-Daisy4-4-06Small.jpg"/>
+      <img id="a" modTime="2009-09-22-13:33" url="http://www.perfect.ca.com.au/photos/11227-Frog.jpg"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-04-12:40" status="sold">
+    <uniqueID>2674517</uniqueID>
+    <authority value="auction"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>216871</agentID>
+      <name>Melanie Admin</name>
+      <telephone type="mobile">0412 212 905</telephone>
+      <email>info@liasolutions.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/staffnoimage.gif</imageURL>
+    </listingAgent>
+    <price display="no">630000</price>
+    <priceView>Auction</priceView>
+    <address display="yes">
+      <streetNumber>98</streetNumber>
+      <street>Beach Lane</street>
+      <suburb display="yes">ADELAIDE</suburb>
+      <state>SA</state>
+      <postcode>5000</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Fantastic Property..]]></headline>
+    <description><![CDATA[This property will impress. Located within the tranquil surroundings of parkland and close
+to the beach. Perfect for the whole family - within walking distance to Rose Catholic
+College.
+
+Inspect this weekend. You will not be disappointed.]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="no" plusSAV="no">400000</price>
+      <date>2010-05-28-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter">343</area>
+    </buildingDetails>
+    <inspectionTimes/>
+    <auction date="2008-07-11-13:25"/>
+    <externalLink href=""/>
+    <videoLink href="http://www.ca.com.au"/>
+    <images>
+      <img id="m" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/25470-Image20main20house.jpg"/>
+      <img id="a" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/18388-10014-2-80robert-frt.jpg"/>
+      <img id="b" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/18619-25703-41hylakit.jpg"/>
+      <img id="c" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/1649-UpperLiving.jpg"/>
+      <img id="d" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/16766-1samson-5.jpg"/>
+      <img id="e" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/12707-Waterlilies.jpg"/>
+      <img id="f" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/15666-Front1.JPG"/>
+      <img id="g" modTime="2010-04-23-06:24" url="http://www.perfect.ca.com.au/photos/23052009023.jpg"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-04-07:52" status="withdrawn">
+    <uniqueID>2742009</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>36709</agentID>
+      <name>David Smith</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>davidja@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/2734-rickanderin002.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">1111111</price>
+    <priceView>$1,111,111</priceView>
+    <address display="yes">
+      <streetNumber>1</streetNumber>
+      <street>sdsas</street>
+      <suburb display="yes">NORANDA</suburb>
+      <state>WA</state>
+      <postcode>6062</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[adasaasddadd]]></headline>
+    <description><![CDATA[asdsadadadadasda]]></description>
+    <features>
+      <bedrooms>1</bedrooms>
+      <bathrooms>1</bathrooms>
+      <garages>1</garages>
+      <carports>0</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <residential modTime="2010-06-08-13:29" status="sold">
+    <uniqueID>2753857</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <isHomeLandPackage value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>158235</agentID>
+      <name>Adam Smith</name>
+      <telephone type="BH">0892260011</telephone>
+      <email>adamc@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/19442-baby.jpg</imageURL>
+    </listingAgent>
+    <price display="yes">500000</price>
+    <priceView>Price Upon Application</priceView>
+    <address display="no">
+      <streetNumber>1840</streetNumber>
+      <street>The Horsley Drive</street>
+      <suburb display="yes">HORSLEY PARK</suburb>
+      <state>NSW</state>
+      <postcode>2175</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Renovators Delight]]></headline>
+    <description><![CDATA[Be first to inspection............]]></description>
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>2</garages>
+      <carports>0</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>1</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <soldDetails>
+      <price display="yes" plusSAV="no">500000</price>
+      <date>2010-06-15-00:00:00</date>
+    </soldDetails>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes>
+      <inspection>19-Jun-2010 10:00AM to 11:00AM</inspection>
+      <inspection>26-Jun-2010 10:00AM to 11:00AM</inspection>
+    </inspectionTimes>
+    <externalLink href=""/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2010-06-08-12:41" url="http://www.perfect.ca.com.au/photos/16550-testproperty1.jpg"/>
+      <img id="a" modTime="2010-06-08-12:41" url="http://www.perfect.ca.com.au/photos/16714-testproperty2.jpg"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </residential>
+  <rental modTime="2010-06-08-12:14" status="current">
+    <uniqueID>1790699</uniqueID>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <dateAvailable>2010-06-14</dateAvailable>
+    <rent display="yes" period="week">465</rent>
+    <priceView/>
+    <bond>1860</bond>
+    <address display="yes">
+      <streetNumber>13 </streetNumber>
+      <street>Smith Street</street>
+      <suburb display="yes">BANJUP</suburb>
+      <state>WA</state>
+      <postcode>6164</postcode>
+    </address>
+    <category name="House"/>
+    <headline><![CDATA[Available Short Term Lease]]></headline>
+    <description><![CDATA[Ho ho ho merry christmas]]></description>
+    <features>
+      <bedrooms>3</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <otherFeatures>Reticulation,Kitchen/Dining,Family Room,Beach Access, Dishwasher, Balcony, Pool</otherFeatures>
+    </features>
+    <holiday value="no"/>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <inspectionTimes/>
+    <externalLink href="http://www.realestate.com.au/listsearchview.ds?theme=rea.rent&amp;newSearch=true&amp;display=list&amp;where=Wellard%2C+WA+6170&amp;includeSurrounding=true&amp;propertytypegroup=&amp;numbeds=&amp;propertytype=&amp;lotSize=&amp;listprice=&amp;listprice=&amp;search.x=73&amp;search.y=17"/>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-12-08-14:05" url="http://www.perfect.ca.com.au/rentphotos/22314-Sunset.jpg"/>
+      <img id="a" modTime="2009-12-08-14:05" url="http://www.perfect.ca.com.au/rentphotos/22063-Waterlilies.jpg"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </rental>
+  <rural modTime="2010-06-09-09:51" status="sold">
+    <uniqueID>1787273</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>167214</agentID>
+      <name>Chris Scandurra</name>
+      <telephone type="mobile">0413 838460</telephone>
+      <telephone type="BH">02 9999 8888</telephone>
+      <email>christian@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/staffnoimage.gif</imageURL>
+    </listingAgent>
+    <price display="yes">500000</price>
+    <priceView>555000</priceView>
+    <address display="yes">
+      <streetNumber>21</streetNumber>
+      <street>conder</street>
+      <suburb display="yes">CONDER</suburb>
+      <state>ACT</state>
+      <postcode>2906</postcode>
+    </address>
+    <ruralCategory name="Dairy"/>
+    <headline><![CDATA[ghhgfhgfh]]></headline>
+    <description><![CDATA[ghgfhgfhgfh]]></description>
+    <features>
+      <bedrooms>2</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),Large Pool</otherFeatures>
+    </features>
+    <ruralFeatures>
+      <fencing/>
+      <annualRainfall/>
+      <soilTypes/>
+      <irrigation/>
+      <carryingCapacity/>
+      <services/>
+    </ruralFeatures>
+    <videoLink href=""/>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </rural>
+  <rural modTime="2010-06-09-07:58" status="sold">
+    <uniqueID>2007230999</uniqueID>
+    <authority value="exclusive"/>
+    <underOffer value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>208091</agentID>
+      <name>Paul Taylor</name>
+      <telephone type="mobile">0428101449</telephone>
+      <email>paul@bundabergpropertygallery.com.au</email>
+    </listingAgent>
+    <price display="yes">235000</price>
+    <priceView>reduced to sell $235,000</priceView>
+    <address display="no">
+      <streetNumber>10</streetNumber>
+      <street>ATWELLS ROAD</street>
+      <suburb display="yes">FARNSFIELD</suburb>
+      <state>QLD</state>
+      <postcode>4660</postcode>
+    </address>
+    <ruralCategory name="Other"/>
+    <headline><![CDATA[READY TO CROP]]></headline>
+    <description><![CDATA[16Ha laser levelled block with 20Meg IWS with 40psi line pressure.
+5 Meg dam, 6x6mtr shed with roller door.
+
+Available 7 days
+Paul Taylor 0428 101 449 or 4151 3233
+paul@bundabergpropertygallery.com.au
+
+Vast experience selling- Rural Properties, Lifestyle Properties, Small Crop farms, Tree Crop farms, Aquaculture properties and extensive personal Agronomy knowledge.
+]]></description>
+    <features>
+      <bedrooms>0</bedrooms>
+      <bathrooms>0</bathrooms>
+      <garages>0</garages>
+      <carports>0</carports>
+      <airConditioning>0</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s)</otherFeatures>
+    </features>
+    <ruralFeatures>
+      <fencing/>
+      <annualRainfall/>
+      <soilTypes/>
+      <irrigation/>
+      <carryingCapacity/>
+      <services/>
+    </ruralFeatures>
+    <videoLink href=""/>
+    <images>
+      <img id="m" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/1d26f73b-9ab5-46c4-8734-9b127ad7c9db_FS.JPG"/>
+      <img id="a" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/3816fe77-7dca-46d1-a5e8-ad401590a471_FS.JPG"/>
+      <img id="b" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/f232a729-0c91-4ff7-83bd-8547cab3b056_FS.JPG"/>
+      <img id="c" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/69e8cfa5-8985-4961-9284-6468f696276b_FS.JPG"/>
+      <img id="d" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/368a428c-3f7e-4a25-8498-573cc0d712b2_FS.JPG"/>
+      <img id="e" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/70e8c7d9-af96-4e37-958c-89ff833773e1_FS.JPG"/>
+      <img id="f" modTime="2009-03-03-15:47" url="http://www.perfect.ca.com.au/photos/dea0d259-4ae4-4b72-8225-1c46518fd844_FS.JPG"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </rural>
+  <commercial modTime="2010-06-08-13:13" status="withdrawn">
+    <uniqueID>2754107</uniqueID>
+    <commercialListingType value="lease"/>
+    <underOffer value="no"/>
+    <officeDetails>
+      <officeID><![CDATA[2158]]></officeID>
+      <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
+      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressSuburb><![CDATA[West Perth]]></addressSuburb>
+      <addressPostcode><![CDATA[6008]]></addressPostcode>
+      <addressState><![CDATA[WA]]></addressState>
+      <addressCountry><![CDATA[Australia]]></addressCountry>
+      <officeEmail><![CDATA[support@ca.com.au]]></officeEmail>
+      <officeURL><![CDATA[]]></officeURL>
+      <officePhone><![CDATA[(08) 9226 0011]]></officePhone>
+    </officeDetails>
+    <listingAgent id="1">
+      <agentID>35387</agentID>
+      <name>Adam Jones</name>
+      <telephone type="BH">08 9226 0011</telephone>
+      <email>adam@ca.com.au</email>
+      <imageURL>http://www.perfect.ca.com.au/staffphotos/5288-18476-shrek.gif</imageURL>
+    </listingAgent>
+    <price display="yes">450000</price>
+    <priceView>$450 per week</priceView>
+    <commercialRent period="annual" tax="exclusive">5400000</commercialRent>
+    <tenancy>vacant</tenancy>
+    <address display="no">
+      <streetNumber>12</streetNumber>
+      <street>honeymyrtle court</street>
+      <suburb display="yes">MOUNTAIN CREEK</suburb>
+      <state>QLD</state>
+      <postcode>4557</postcode>
+    </address>
+    <commercialCategory name="Retail" id="1"/>
+    <headline><![CDATA[asdfasdf]]></headline>
+    <description><![CDATA[asdfasdfasdfasdfasd]]></description>
+    <landDetails>
+      <area unit="squareMeter"/>
+    </landDetails>
+    <buildingDetails>
+      <area unit="squareMeter"/>
+    </buildingDetails>
+    <carSpaces>5</carSpaces>
+    <externalLink href=""/>
+    <images>
+      <img id="m" modTime="2010-06-08-13:12" url="http://www.perfect.ca.com.au/photos/8167-3-Elsa-Wilson-Dr-009.jpg"/>
+      <img id="a"/>
+      <img id="b"/>
+      <img id="c"/>
+      <img id="d"/>
+      <img id="e"/>
+      <img id="f"/>
+      <img id="g"/>
+      <img id="h"/>
+      <img id="i"/>
+      <img id="j"/>
+      <img id="k"/>
+      <img id="l"/>
+      <img id="n"/>
+      <img id="o"/>
+      <img id="p"/>
+      <img id="q"/>
+      <img id="r"/>
+      <img id="s"/>
+      <img id="t"/>
+      <img id="u"/>
+      <img id="v"/>
+      <img id="w"/>
+      <img id="x"/>
+      <img id="y"/>
+      <img id="z"/>
+    </images>
+    <objects>
+      <floorplan id="1"/>
+    </objects>
+  </commercial>
+</propertyList>

@@ -6,6 +6,9 @@ module SaxStream
   module Internal
     class SaxHandler < Nokogiri::XML::SAX::Document
       def initialize(mapper_handlers, handler_stack = HandlerStack.new)
+        mapper_handlers.each do |handler|
+          handler.stack = handler_stack
+        end
         handler_stack.root = CombinedHandler.new(handler_stack, mapper_handlers)
         @handler_stack = handler_stack
       end

@@ -4,9 +4,15 @@ require 'sax_stream/internal/mapper_handler'
 module SaxStream
   describe Internal::MapperHandler do
     let(:new_mapped_object) { double("instance of mapper class") }
-    let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :node_name => 'foobar') }
+    let(:element_stack)     { Internal::ElementStack.new }
+    let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :node_name => 'foobar', :child_handler_for => nil) }
     let(:collector)         { double("collector") }
-    let(:subject)           { Internal::MapperHandler.new(mapper_class, collector) }
+    let(:handler_stack)     { double("HandlerStack") }
+    let(:subject) do
+      result = Internal::MapperHandler.new(mapper_class, collector, element_stack)
+      result.stack = handler_stack
+      result
+    end
 
     context "maps_node" do
       it "is true if name equal node name" do
@@ -20,18 +26,55 @@ module SaxStream
       end
     end
 
-    context "start_element" do
+    context "start_element and end_element" do
       context "for main mapper class element" do
-        it "instantiates a mapped object" do
+        it "instantiates a mapped object on start" do
           subject.start_element('foobar')
           subject.current_object.should == new_mapped_object
         end
 
-        it "sets attributes on the mapped object" do
+        it "sets attributes on the mapped object on start" do
           mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
           subject.start_element('foobar', [['a', 'b']])
         end
       end
+
+      context "for another element" do
+        it "maps element stack onto mapped object on end" do
+          subject.start_element('foobar')
+          mapper_class.should_receive(:map_element_stack_top_onto_object).with(new_mapped_object, element_stack)
+
+          subject.start_element('barfoo')
+          subject.end_element('barfoo')
+        end
+
+        it "raises an error if it gets another element before the mapped element" do
+          lambda {
+            subject.start_element('barfoo')
+          }.should raise_error(ProgramError)
+        end
+
+        context "if the element matches a child attribute" do
+          let(:post_handler) { double("post handler", :start_element => nil) }
+
+          before do
+            subject.start_element('foobar')
+            mapper_class.stub!(:child_handler_for).with('post').and_return(post_handler)
+            handler_stack.stub(:push)
+          end
+
+          it "pushes a new handler onto the sax handling stack" do
+            handler_stack.should_receive(:push).with(post_handler)
+            subject.start_element('post')
+          end
+
+          it "calls start_element on the new handler" do
+            post_handler.should_receive(:start_element).with('post', [['a', 'b']])
+            subject.start_element('post', [['a', 'b']])
+          end
+        end
+      end
     end
+
   end
 end
