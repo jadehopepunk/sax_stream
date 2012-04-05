@@ -7,11 +7,11 @@ The two main goals of this process are:
 1. To avoid loading the entire XML file stream into memory at once.
 2. To avoid loading all the mapped objects into memory simultaneously.
 
-# Status
+## Status
 
 Currently development has only just started, please come back in a week.
 
-# Author
+## Author
 
 Craig Ambrose
 http://www.craigambrose.com
