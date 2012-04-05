@@ -5,13 +5,17 @@ require 'sax_stream/naive_collector'
 
 describe "sax stream parser" do
   context "with a single node file" do
-    class ProductMapper
+    class Product
       include SaxStream::Mapper
+
+      node 'product'
+      map :id,     :to => '@id'
+      map :status, :to => '@status'
     end
 
     it "builds the mapped object for the node and passes it to the collector" do
       collector = SaxStream::NaiveCollector.new
-      parser = SaxStream::Parser.new(collector => [ProductMapper])
+      parser = SaxStream::Parser.new(collector => [Product])
 
       parser.parse_stream(open_fixture(:simple_product))
 

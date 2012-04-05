@@ -16,7 +16,8 @@ module SaxStream
     end
 
     def parse_stream(io_stream)
-      Nokogiri::XML::SAX::Parser.new(@sax_handler)
+      parser = Nokogiri::XML::SAX::Parser.new(@sax_handler)
+      parser.parse(io_stream)
     end
   end
 end
