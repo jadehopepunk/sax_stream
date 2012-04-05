@@ -21,7 +21,7 @@ describe "sax stream parser" do
 
       collector.mapped_objects.length.should == 1
       product = collector.mapped_objects.first
-      product.should be_a?(ProductMapper)
+      product.should be_a(Product)
       product['id'].should == '123'
       product['status'].should == 'new'
     end

@@ -3,9 +3,10 @@ require 'sax_stream/internal/mapper_handler'
 
 module SaxStream
   describe Internal::MapperHandler do
-    let(:mapper_class) { double("mapper class") }
-    let(:collector)    { double("collector") }
-    let(:subject)      { Internal::MapperHandler.new(mapper_class, collector) }
+    let(:new_mapped_object) { double("instance of mapper class") }
+    let(:mapper_class)      { double("mapper class", :new => new_mapped_object) }
+    let(:collector)         { double("collector") }
+    let(:subject)           { Internal::MapperHandler.new(mapper_class, collector) }
 
     context "maps_node" do
       it "is true if name equal node name" do
@@ -20,7 +21,10 @@ module SaxStream
     end
 
     context "start_element" do
-
+      it "instantiates a mapped object" do
+        subject.start_element('client')
+        subject.current_object.should == new_mapped_object
+      end
     end
   end
 end
