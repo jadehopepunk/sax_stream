@@ -1,9 +1,12 @@
 module SaxStream
   module Internal
     class HandlerStack
-      def initialize(root_handler)
-        raise ArgumentError unless root_handler
-        @handlers = [root_handler]
+      def initialize()
+        @handlers = []
+      end
+
+      def root=(value)
+        @handlers = [value]
       end
 
       def top
@@ -15,7 +18,7 @@ module SaxStream
       end
 
       def pop
-        raise ProgramError, "can't push the last handler" if @handlers.length <= 1
+        raise ProgramError, "can't pop the last handler" if @handlers.length <= 1
         @handlers.pop
       end
     end

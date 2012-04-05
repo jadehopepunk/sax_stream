@@ -5,7 +5,7 @@ module SaxStream
   describe Internal::SaxHandler do
     let(:mapping_handlers) { double("mapping handlers") }
     let(:top)              { double("top handler") }
-    let(:stack)            { double("HandlerStack", :top => top) }
+    let(:stack)            { double("HandlerStack", :top => top, :root= => nil) }
     let(:subject)          { Internal::SaxHandler.new(mapping_handlers, stack) }
 
     it "forwards start_element to the top of the stack" do

@@ -5,7 +5,8 @@ require 'sax_stream/internal/combined_handler'
 module SaxStream
   module Internal
     class SaxHandler < Nokogiri::XML::SAX::Document
-      def initialize(mapper_handlers, handler_stack = HandlerStack.new(CombinedHandler.new(mapper_handlers)))
+      def initialize(mapper_handlers, handler_stack = HandlerStack.new)
+        handler_stack.root = CombinedHandler.new(handler_stack, mapper_handlers)
         @handler_stack = handler_stack
       end
 
