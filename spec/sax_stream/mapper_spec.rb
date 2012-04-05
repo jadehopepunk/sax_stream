@@ -12,4 +12,8 @@ describe SaxStream::Mapper do
       Sample.node_name.should == 'foobar'
     end
   end
+
+  context "mapping attributes" do
+
+  end
 end

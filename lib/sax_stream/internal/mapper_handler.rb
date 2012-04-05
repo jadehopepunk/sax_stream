@@ -15,6 +15,9 @@ module SaxStream
 
       def start_element(name, attrs = [])
         @current_object = @mapper_class.new
+        attrs.each do |key, value|
+          @mapper_class.map_attribute_onto_object(@current_object, key, value)
+        end
       end
 
       def end_element(name)

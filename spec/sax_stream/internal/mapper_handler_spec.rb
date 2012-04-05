@@ -25,6 +25,11 @@ module SaxStream
         subject.start_element('client')
         subject.current_object.should == new_mapped_object
       end
+
+      it "sets attributes on the mapped object" do
+        mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
+        subject.start_element('client', [['a', 'b']])
+      end
     end
   end
 end
