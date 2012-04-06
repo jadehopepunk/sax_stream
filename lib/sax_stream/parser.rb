@@ -7,11 +7,7 @@ module SaxStream
     def initialize(collector, mappers)
       raise ArgumentError, "You must supply your parser with a collector" unless collector
       raise ArgumentError, "You must supply your parser with at least one mapper class" if mappers.empty?
-
-      mapper_handlers = mappers.map do |mapper|
-        Internal::MapperHandler.new(mapper, collector)
-      end
-      @sax_handler = Internal::SaxHandler.new(mapper_handlers)
+      @sax_handler = Internal::SaxHandler.new(collector, mappers)
     end
 
     def parse_stream(io_stream)

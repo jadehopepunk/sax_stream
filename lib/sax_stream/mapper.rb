@@ -1,4 +1,5 @@
 require 'sax_stream/internal/field_mapping'
+require 'sax_stream/internal/child_mapping'
 
 module SaxStream
   module Mapper
@@ -16,10 +17,15 @@ module SaxStream
       end
 
       def children(attribute_name, options)
+        @child = Internal::ChildMapping.new(attribute_name, options)
       end
 
       def node_name
         @node_name
+      end
+
+      def maps_node?(name)
+        @node_name == name
       end
 
       def map_attribute_onto_object(object, key, value)
@@ -40,8 +46,10 @@ module SaxStream
         end
       end
 
-      def child_handler_for(name, collector)
-        # raise NotImplementedError
+      def child_handler_for(name, collector, handler_stack)
+        if @child
+          @child.handler_for(name, collector, handler_stack)
+        end
       end
 
       private

@@ -17,8 +17,9 @@ module SaxStream
         @handlers.push(handler)
       end
 
-      def pop
+      def pop(handler = nil)
         raise ProgramError, "can't pop the last handler" if @handlers.length <= 1
+        raise ProgramError, "popping handler that isn't the top" if handler && handler != @handlers.last
         @handlers.pop
       end
     end

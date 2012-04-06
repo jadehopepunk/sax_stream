@@ -56,7 +56,11 @@ describe "sax stream parser" do
       parser = SaxStream::Parser.new(collector, [PropertyList])
 
       parser.parse_stream(open_fixture(:reaxml))
-      raise collector.mapped_objects.inspect
+      collector.mapped_objects.map(&:class).map(&:name).should == [
+        "Business", "Residential", "Residential", "Residential", "Residential", "Residential",
+        "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
+        "Residential", "Residential", "PropertyList"
+      ]
     end
   end
 end

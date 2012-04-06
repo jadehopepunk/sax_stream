@@ -4,18 +4,22 @@ module SaxStream
   module Internal
     class MapperHandler
       attr_accessor :stack
+      attr_reader :mapper_class, :collector
 
-      def initialize(mapper_class, collector, element_stack = ElementStack.new)
+      def initialize(mapper_class, collector, handler_stack, element_stack = ElementStack.new)
         raise ArgumentError, "no collector" unless collector
         raise ArgumentError, "no mapper class" unless mapper_class
+        raise ArgumentError, "no handler stack" unless handler_stack
+        raise ArgumentError, "no element stack" unless element_stack
 
         @mapper_class = mapper_class
         @collector = collector
         @element_stack = element_stack
+        @stack = handler_stack
       end
 
       def maps_node?(node_name)
-        @mapper_class.node_name == node_name
+        @mapper_class.maps_node?(node_name)
       end
 
       def start_element(name, attrs = [])
@@ -49,7 +53,7 @@ module SaxStream
         end
 
         def start_child_node(name, attrs)
-          handler = @mapper_class.child_handler_for(name, @collector)
+          handler = @mapper_class.child_handler_for(name, @collector, @stack)
           if handler
             @stack.push(handler)
             handler.start_element(name, attrs)
@@ -74,6 +78,7 @@ module SaxStream
           raise ProgramError unless @current_object
           raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.class.node_name.inspect}" unless @current_object.class.node_name == name
           @collector << @current_object
+          @stack.pop(self)
           @current_object = nil
         end
     end
