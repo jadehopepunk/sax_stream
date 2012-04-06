@@ -30,6 +30,10 @@ module SaxStream
         pop_element_stack(name) || end_current_object(name)
       end
 
+      def cdata_block(string)
+        characters(string)
+      end
+
       def characters(string)
         unless @element_stack.empty?
           @element_stack.record_characters(string)

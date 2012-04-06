@@ -44,6 +44,7 @@ describe "sax stream parser" do
 
       node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
+      map :office_name, :to => 'officeDetails/officeName'
     end
 
     class Residential
@@ -70,6 +71,7 @@ describe "sax stream parser" do
       ]
       business = collector.mapped_objects.first
       business['modified_at'].should == 'somedate: 2010-08-02-13:25'
+      business['office_name'].should == 'Sydney Premier Real Estate'
     end
   end
 end

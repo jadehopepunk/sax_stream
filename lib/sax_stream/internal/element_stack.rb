@@ -39,10 +39,12 @@ module SaxStream
 
       def push(name, attrs)
         @elements.push(Element.new(name, attrs))
+        # indented_puts "push element #{name}"
       end
 
       def pop
         raise ProgramError, "attempting to pop an empty ElementStack" if @elements.empty?
+        # indented_puts "pop element"
         @elements.pop
       end
 
@@ -63,8 +65,17 @@ module SaxStream
       end
 
       def record_characters(string)
+        # indented_puts "  record: #{string.inspect}"
         @elements.last.record_characters(string)
       end
+
+      private
+
+        def indented_puts(string)
+          indent = ''
+          @elements.length.times { indent << '  ' }
+          puts indent + string
+        end
     end
   end
 end
