@@ -11,7 +11,8 @@ This is currently only for XML importing. Supporting exporting too would be nice
 
 ## Status
 
-Currently development has only just started, the library is useable for minimal experimental use cases, but don't use it for production.
+Supports basic XML examples. Still needs to be tested with more complex XML.
+Even slightly invalid XML is likely to cause an immediate exception.
 
 ## Installation
 
@@ -39,7 +40,7 @@ end
 
 In this example, Product is a mapping class. It maps to an xml node named "product". Each "attribute" on this product object is defined using the "map" class method. The :to option uses a syntax which is similar to XPath, but not the same. Slashes seperate levels in the XML node heirarchy. If the data is in an attribute, this is designated by the @symbol. Obviously attributes must be at the end of the path, as they have no children. This product class is used to parse XML like this:
 
-```ruby
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <product id="123" status="new">
   <name confirmed="yes">iPhone 5G</name>
