@@ -23,7 +23,7 @@ Not yet packed as a gem, install it from github.
 
 These are object definitions that you would like to extract from the XML. I recommend sticking with fairly thin classes for these. In the past, I've used similar libraries like ROXML and inherited my mapping classes from ActiveRecord or other base classes, and ended up with poorly designed code. Your mapper classes should do one thing only, provide access to structured in-memory data which can be streamed from XML.
 
-```
+```ruby
 require 'sax_stream/mapper'
 
 class Product
@@ -39,18 +39,37 @@ end
 
 In this example, Product is a mapping class. It maps to an xml node named "product". Each "attribute" on this product object is defined using the "map" class method. The :to option uses a syntax which is similar to XPath, but not the same. Slashes seperate levels in the XML node heirarchy. If the data is in an attribute, this is designated by the @symbol. Obviously attributes must be at the end of the path, as they have no children. This product class is used to parse XML like this:
 
-```
+```ruby
 <?xml version="1.0" encoding="UTF-8"?>
 <product id="123" status="new">
   <name confirmed="yes">iPhone 5G</name>
 </product>
 ```
 
+All data written to your object from the XML will be string, unless you convert the. To specify a converter on a field mapping, use the :as option.
+
+```ruby
+  map :created_at, :to => '@createdAt', :as => DateTime
+```
+
+The :as option can be handed any object which supports a "parse" method, which takes a string as it's first and only parameter, and outputs the converted value. It looks particularly good if this converter is also a class, which indicates that the converted value will be an instance of this class.
+
+This library doesn't include any converters, so the DateTime example above wont work out of the box. However, if you are using the active_support gem, then Date, Time & DateTime will all work as values for :as. If you're dealing with a file format that formats dates (or some other object) in an unusual way, simply define your own.
+
+```ruby
+class UnusualDate
+  def self.parse(string)
+    # convert this unusual string to a Date
+    # No need to check for nil, sax_stream does that
+  end
+end
+```
+
 ### Run the parser
 
 The parser object must be supplied with a collector and an array of mapping classes to use.
 
-```
+```ruby
 require 'sax_stream/parser'
 
 collector = SaxStream::NaiveCollector.new
