@@ -33,10 +33,17 @@ describe "sax stream parser" do
   end
 
   context "with a complex list of different node types" do
+    class ReaxmlDateTime
+      def self.parse(string)
+        "somedate: #{string}"
+      end
+    end
+
     class Business
       include SaxStream::Mapper
 
       node 'business'
+      map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
     end
 
     class Residential
@@ -61,6 +68,8 @@ describe "sax stream parser" do
         "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
         "Residential", "Residential", "PropertyList"
       ]
+      business = collector.mapped_objects.first
+      business['modified_at'].should == 'somedate: 2010-08-02-13:25'
     end
   end
 end
