@@ -39,12 +39,20 @@ describe "sax stream parser" do
       end
     end
 
+    class Agent
+      include SaxStream::Mapper
+      node 'listingAgent'
+
+      map :name, :to => 'name'
+    end
+
     class Business
       include SaxStream::Mapper
 
       node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
       map :office_name, :to => 'officeDetails/officeName'
+      relate :agent, :to => 'listingAgent', :as => Agent
     end
 
     class Residential
@@ -57,7 +65,7 @@ describe "sax stream parser" do
       include SaxStream::Mapper
 
       node 'propertyList'
-      children :properties, :as => [Business, Residential]
+      relate :properties, :as => [Business, Residential]
     end
 
     it "builds the appropriate object for each node" do
@@ -65,13 +73,18 @@ describe "sax stream parser" do
 
       parser.parse_stream(open_fixture(:reaxml))
       collector.mapped_objects.map(&:class).map(&:name).should == [
-        "Business", "Residential", "Residential", "Residential", "Residential", "Residential",
-        "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
-        "Residential", "Residential", "PropertyList"
+        "Agent",
+        "Business", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
+        "Residential", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
+        "PropertyList"
       ]
-      business = collector.mapped_objects.first
+      business = collector.for_type(Business).first
       business['modified_at'].should == 'somedate: 2010-08-02-13:25'
       business['office_name'].should == 'Sydney Premier Real Estate'
+      # agent = business['agent']
+      # agent.should be_nil
+      # agent.should be_a(Agent)
+      # agent.name.should == 'Sonia Hume'
     end
   end
 end

@@ -13,11 +13,11 @@ module SaxStream
       end
 
       def map(attribute_name, options)
-        mappings[options[:to]] = Internal::FieldMapping.new(attribute_name, options)
+        store_field_mapping(options[:to], Internal::FieldMapping.new(attribute_name, options))
       end
 
-      def children(attribute_name, options)
-        @child = Internal::ChildMapping.new(attribute_name, options)
+      def relate(attribute_name, options)
+        store_field_mapping(options[:to] || '*', Internal::ChildMapping.new(attribute_name, options))
       end
 
       def node_name
@@ -40,19 +40,43 @@ module SaxStream
       end
 
       def map_key_onto_object(object, key, value)
-        mapping = mappings[key]
+        mapping = field_mapping(key)
         if mapping
           mapping.map_value_onto_object(object, value)
         end
       end
 
-      def child_handler_for(name, collector, handler_stack)
-        if @child
-          @child.handler_for(name, collector, handler_stack)
+      def child_handler_for(key, collector, handler_stack)
+        mapping = field_mapping(key)
+        if mapping
+          mapping.handler_for(key, collector, handler_stack)
         end
       end
 
       private
+
+        def store_field_mapping(key, mapping)
+          if key.include?('*')
+            regex_mappings << [Regexp.new(key.gsub('*', '[^/]+')), mapping]
+          else
+            mappings[key] = mapping
+          end
+        end
+
+        def field_mapping(key)
+          mappings[key] || regex_field_mapping(key)
+        end
+
+        def regex_field_mapping(key)
+          regex_mappings.each do |regex, mapping|
+            return mapping if regex =~ key
+          end
+          nil
+        end
+
+        def regex_mappings
+          @regex_mappings ||= []
+        end
 
         def mappings
           @mappings ||= {}
@@ -66,6 +90,11 @@ module SaxStream
     def [](key)
       attributes[key]
     end
+
+    def inspect
+      "#{self.class.name}: #{attributes.inspect}"
+    end
+
 
     private
 

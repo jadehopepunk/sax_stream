@@ -39,7 +39,7 @@ describe SaxStream::Mapper do
     end
   end
 
-  context "mapping children" do
+  context "mapping related children" do
     before do
       Object.class_eval do
         class Post
@@ -59,7 +59,7 @@ describe SaxStream::Mapper do
     end
 
     it "will return a child handler for a mapped child" do
-      Sample.children :listings, :as => [Post, Article]
+      Sample.relate :listings, :to => '*', :as => [Post, Article]
       result = Sample.child_handler_for('article', collector, handler_stack)
 
       result.should_not be_nil
@@ -68,7 +68,7 @@ describe SaxStream::Mapper do
     end
 
     it "wont return a child handler for an unmapped child" do
-      Sample.children :listings, :as => [Post, Article]
+      Sample.relate :listings, :to => '*', :as => [Post, Article]
       Sample.child_handler_for('feature', collector, handler_stack).should be_nil
     end
   end
