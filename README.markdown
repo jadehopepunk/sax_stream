@@ -1,5 +1,7 @@
 # Sax Stream
 
+[![Build Status](https://secure.travis-ci.org/craigambrose/sax_stream.png)](http://travis-ci.org/craigambrose/sax_stream)
+
 An XML parsing library using Nokogiri's Sax Parser which uses an object mapper to build objects from XML nodes and lets you use them as they are built, rather than waiting until the file is fully parsed.
 
 The two main goals of this process are:
@@ -90,4 +92,5 @@ I plan to supply a batching collector which will collect a certain number of obj
 ## Author
 
 Craig Ambrose
+
 http://www.craigambrose.com
