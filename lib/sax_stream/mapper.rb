@@ -9,8 +9,9 @@ module SaxStream
     end
 
     module ClassMethods
-      def node(name)
+      def node(name, options = {})
         @node_name = name
+        @collect = options.has_key?(:collect) ? options[:collect] : true
       end
 
       def map(attribute_name, options = {})
@@ -83,6 +84,10 @@ module SaxStream
 
       def relation_mappings
         @relation_mappings ||= []
+      end
+
+      def should_collect?
+        @collect
       end
 
       private

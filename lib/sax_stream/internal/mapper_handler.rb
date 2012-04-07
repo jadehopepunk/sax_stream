@@ -100,7 +100,9 @@ module SaxStream
         def end_current_object(name)
           raise ProgramError unless @current_object
           raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.class.node_name.inspect}" unless @current_object.class.node_name == name
-          @collector << @current_object
+          if @current_object.class.should_collect?
+            @collector << @current_object
+          end
           @stack.pop(self)
           @current_object = nil
         end

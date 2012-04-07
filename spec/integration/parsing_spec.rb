@@ -64,7 +64,7 @@ describe "sax stream parser" do
     class PropertyList
       include SaxStream::Mapper
 
-      node 'propertyList'
+      node 'propertyList', :collect => false
       relate :properties, :as => [Business, Residential]
     end
 
@@ -74,8 +74,7 @@ describe "sax stream parser" do
       parser.parse_stream(open_fixture(:reaxml))
       collector.mapped_objects.map(&:class).map(&:name).should == [
         "Business", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
-        "Residential", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
-        "PropertyList"
+        "Residential", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential"
       ]
       business = collector.for_type(Business).first
       business['modified_at'].should == 'somedate: 2010-08-02-13:25'
