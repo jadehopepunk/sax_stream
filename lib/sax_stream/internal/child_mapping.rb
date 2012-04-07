@@ -5,17 +5,18 @@ module SaxStream
     class ChildMapping
       attr_reader :name
 
-      # Supported options are :to, :as & :collect. See Mapper.relate documentation for more details.
+      # Supported options are :to, :as & :parent_collects. See Mapper.relate documentation for more details.
       def initialize(name, options)
         @name = name.to_s
-        @collect = options[:collect]
+        @parent_collects = options[:parent_collects]
         process_conversion_type(options[:as])
       end
 
-      def handler_for(node_name, collector, handler_stack, parent_object)
+      def handler_for(node_path, collector, handler_stack, parent_object)
+        node_name = node_path.split('/').last
         @mapper_classes.each do |mapper_class|
           if mapper_class.maps_node?(node_name)
-            new_handler_collector = @collect ? parent_object.relations[name] : collector
+            new_handler_collector = @parent_collects ? parent_object.relations[name] : collector
             return MapperHandler.new(mapper_class, new_handler_collector, handler_stack)
           end
         end

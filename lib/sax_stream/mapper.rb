@@ -33,7 +33,7 @@ module SaxStream
       #                          Needs to be a class which includes SaxStream::Mapper, or an array of such classes.
       #                          Using an array of classes only makes sense if there is a wildcard in the :to
       #                          option.
-      #                    [:collect] Default value: false
+      #                    [:parent_collects] Default value: false
       #                          Set to true if the object defining this relationship (ie, the parent
       #                          in the relationship) needs to collect the defined children. If so, the
       #                          parent object will be used as the collector for these children, and they

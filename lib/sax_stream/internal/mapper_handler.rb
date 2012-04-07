@@ -76,7 +76,7 @@ module SaxStream
         end
 
         def start_child_node(name, attrs)
-          handler = @mapper_class.child_handler_for(name, @collector, @stack, @current_object)
+          handler = @mapper_class.child_handler_for(prefix_with_element_stack(name), @collector, @stack, @current_object)
           if handler
             @stack.push(handler)
             handler.start_element(name, attrs)
@@ -105,6 +105,10 @@ module SaxStream
           end
           @stack.pop(self)
           @current_object = nil
+        end
+
+        def prefix_with_element_stack(name)
+          [@element_stack.path, name].reject {|part| part.nil? || part == ''}.join('/')
         end
     end
   end

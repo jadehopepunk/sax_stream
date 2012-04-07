@@ -46,13 +46,21 @@ describe "sax stream parser" do
       map :name, :to => 'name'
     end
 
+    class Image
+      include SaxStream::Mapper
+      node 'img'
+
+      map :id, :to => '@id'
+    end
+
     class Business
       include SaxStream::Mapper
 
       node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
       map :office_name, :to => 'officeDetails/officeName'
-      relate :agent, :to => 'listingAgent', :as => Agent, :collect => true
+      relate :agent, :to => 'listingAgent', :as => Agent, :parent_collects => true
+      relate :images, :to => 'images/img', :as => Image, :parent_collects => true
     end
 
     class Residential
@@ -83,6 +91,9 @@ describe "sax stream parser" do
       agent.should_not be_nil
       agent.should be_a(Agent)
       agent['name'].should == 'Sonia Hume'
+
+      business.relations['images'].map {|image| image['id']}.should ==
+        %w(m a b c d e f g h i j k l n o p q r s t u v w x y z)
     end
   end
 end
