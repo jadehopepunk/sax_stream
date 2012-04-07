@@ -8,11 +8,7 @@ module SaxStream
     let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :child_handler_for => nil, :maps_node? => false) }
     let(:collector)         { double("collector") }
     let(:handler_stack)     { double("HandlerStack") }
-    let(:subject) do
-      result = Internal::MapperHandler.new(mapper_class, collector, element_stack)
-      result.stack = handler_stack
-      result
-    end
+    let(:subject)           { Internal::MapperHandler.new(mapper_class, collector, handler_stack, element_stack) }
 
     context "maps_node" do
       it "is true if mapper class maps node name" do

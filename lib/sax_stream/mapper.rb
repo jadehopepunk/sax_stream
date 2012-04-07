@@ -2,6 +2,7 @@ require 'sax_stream/internal/field_mapping'
 require 'sax_stream/internal/child_mapping'
 
 module SaxStream
+  # Include this module to make your class map an XML node. For usage examples, see the READEME.
   module Mapper
     def self.included(base)
       base.extend ClassMethods
@@ -12,11 +13,38 @@ module SaxStream
         @node_name = name
       end
 
-      def map(attribute_name, options)
+      def map(attribute_name, options = {})
         store_field_mapping(options[:to], Internal::FieldMapping.new(attribute_name, options))
       end
 
-      def relate(attribute_name, options)
+      # Define a relation to another object which is built from an XML node using another class
+      # which also includes SaxStream::Mapper.
+      #
+      # attribute_name:: The name of the attribute on your object that the related objects will be stored in.
+      # options::        An options hash which can accept the following-
+      #                    [:to] Default value: "*"
+      #                          The path to the XML which defines an instance of this related node. This
+      #                          is a bit like an XPath expression, but not quite. See the README for examples.
+      #                          For relations, this can include a wildcard "*" as the last part of the path,
+      #                          eg: "product/review/*". If the path is just set to "*" then this will match
+      #                          any immediate child of the current node, which is good for polymorphic collections.
+      #                    [:as] Required, no default value.
+      #                          Needs to be a class which includes SaxStream::Mapper, or an array of such classes.
+      #                          Using an array of classes only makes sense if there is a wildcard in the :to
+      #                          option.
+      #                    [:collect] Default value: false
+      #                          Set to true if the object defining this relationship (ie, the parent
+      #                          in the relationship) needs to collect the defined children. If so, the
+      #                          parent object will be used as the collector for these children, and they
+      #                          will not be passed to the collector supplied to the parser. Use this when
+      #                          the child objects are not something you want to process on their own, but
+      #                          instead you want them all to be loaded into the parent which will then be
+      #                          collected as normal. If this is left false, then the parent ojbect will
+      #                          not be informed of it's children, because they will be passed to the collector
+      #                          and then forgotten about. However, the children will know about their parent,
+      #                          or at least what is known about it, but the parent will not be finished being
+      #                          parsed. The parent will have already parsed all XML attributes though.
+      def relate(attribute_name, options = {})
         store_field_mapping(options[:to] || '*', Internal::ChildMapping.new(attribute_name, options))
       end
 

@@ -52,7 +52,7 @@ describe "sax stream parser" do
       node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
       map :office_name, :to => 'officeDetails/officeName'
-      relate :agent, :to => 'listingAgent', :as => Agent
+      relate :agent, :to => 'listingAgent', :as => Agent, :collect => true
     end
 
     class Residential

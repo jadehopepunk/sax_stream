@@ -2,10 +2,29 @@ require 'sax_stream/internal/element_stack'
 
 module SaxStream
   module Internal
+    # Handles SAX events on behalf of a mapper class. Expects the first event to be start_element, and then
+    # uses other events to build the element until end_element is received, at which time the completed
+    # object will be sent off to the collector.
+    #
+    # Also handles child elements which use their own mapper class, and will pass off SAX control to other
+    # handlers to achieve this.
     class MapperHandler
       attr_accessor :stack
       attr_reader :mapper_class, :collector
 
+      # mapper_class::  A class which has had SaxStream::Mapper included in it.
+      #
+      # collector::     The collector object used for this parsing run. This gets passed around to everything
+      #                 that needs it.
+      #
+      # handler_stack:: The current stack of Sax handling objects for this parsing run. This gets passed around
+      #                 to everything that needs it. This class does not need to push itself onto the stack,
+      #                 that has already been done for it. If it pushes other handlers onto the stack, then
+      #                 it will no longer be handling SAX events itself until they get popped off.
+      #
+      # element_stack:: Used internally by this object to collect XML elements that have been parsed which may
+      #                 be used when mapping this class. You don't need to pass this in except for dependency
+      #                 injection purposes.
       def initialize(mapper_class, collector, handler_stack, element_stack = ElementStack.new)
         raise ArgumentError, "no collector" unless collector
         raise ArgumentError, "no mapper class" unless mapper_class
