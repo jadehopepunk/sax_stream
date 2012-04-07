@@ -73,7 +73,6 @@ describe "sax stream parser" do
 
       parser.parse_stream(open_fixture(:reaxml))
       collector.mapped_objects.map(&:class).map(&:name).should == [
-        "Agent",
         "Business", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
         "Residential", "Residential", "Residential", "Residential", "Residential", "Residential", "Residential",
         "PropertyList"
@@ -81,10 +80,10 @@ describe "sax stream parser" do
       business = collector.for_type(Business).first
       business['modified_at'].should == 'somedate: 2010-08-02-13:25'
       business['office_name'].should == 'Sydney Premier Real Estate'
-      # agent = business['agent']
-      # agent.should be_nil
-      # agent.should be_a(Agent)
-      # agent.name.should == 'Sonia Hume'
+      agent = business.relations['agent'].first
+      agent.should_not be_nil
+      agent.should be_a(Agent)
+      agent['name'].should == 'Sonia Hume'
     end
   end
 end

@@ -3,16 +3,20 @@ require 'sax_stream/internal/mapper_handler'
 module SaxStream
   module Internal
     class ChildMapping
+      attr_reader :name
+
       # Supported options are :to, :as & :collect. See Mapper.relate documentation for more details.
       def initialize(name, options)
         @name = name.to_s
+        @collect = options[:collect]
         process_conversion_type(options[:as])
       end
 
-      def handler_for(node_name, collector, handler_stack)
+      def handler_for(node_name, collector, handler_stack, parent_object)
         @mapper_classes.each do |mapper_class|
           if mapper_class.maps_node?(node_name)
-            return MapperHandler.new(mapper_class, collector, handler_stack)
+            new_handler_collector = @collect ? parent_object.relations[name] : collector
+            return MapperHandler.new(mapper_class, new_handler_collector, handler_stack)
           end
         end
         nil

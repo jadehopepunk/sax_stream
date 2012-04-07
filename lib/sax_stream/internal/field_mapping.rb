@@ -14,7 +14,7 @@ module SaxStream
         object[@name] = value
       end
 
-      def handler_for(name, collector, handler_stack)
+      def handler_for(name, collector, handler_stack, parent_object)
       end
 
       private

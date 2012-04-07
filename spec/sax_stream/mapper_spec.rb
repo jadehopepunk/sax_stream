@@ -60,7 +60,7 @@ describe SaxStream::Mapper do
 
     it "will return a child handler for a mapped child" do
       Sample.relate :listings, :to => '*', :as => [Post, Article]
-      result = Sample.child_handler_for('article', collector, handler_stack)
+      result = Sample.child_handler_for('article', collector, handler_stack, anything)
 
       result.should_not be_nil
       result.mapper_class.should == Article
@@ -69,7 +69,15 @@ describe SaxStream::Mapper do
 
     it "wont return a child handler for an unmapped child" do
       Sample.relate :listings, :to => '*', :as => [Post, Article]
-      Sample.child_handler_for('feature', collector, handler_stack).should be_nil
+      Sample.child_handler_for('feature', collector, handler_stack, anything).should be_nil
+    end
+
+    it "defines an accessor for the related objects" do
+      Sample.relate :listings, :to => '*', :as => [Post, Article]
+      relation = Sample.new.relations['listings']
+      relation.should_not be_nil
+      relation.should be_empty
+      relation.should respond_to(:<<)
     end
   end
 end

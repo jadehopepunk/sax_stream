@@ -45,7 +45,7 @@ module SaxStream
       #                          or at least what is known about it, but the parent will not be finished being
       #                          parsed. The parent will have already parsed all XML attributes though.
       def relate(attribute_name, options = {})
-        store_field_mapping(options[:to] || '*', Internal::ChildMapping.new(attribute_name, options))
+        store_relation_mapping(options[:to] || '*', Internal::ChildMapping.new(attribute_name, options))
       end
 
       def node_name
@@ -74,14 +74,23 @@ module SaxStream
         end
       end
 
-      def child_handler_for(key, collector, handler_stack)
+      def child_handler_for(key, collector, handler_stack, current_object)
         mapping = field_mapping(key)
         if mapping
-          mapping.handler_for(key, collector, handler_stack)
+          mapping.handler_for(key, collector, handler_stack, current_object)
         end
       end
 
+      def relation_mappings
+        @relation_mappings ||= []
+      end
+
       private
+
+        def store_relation_mapping(key, mapping)
+          relation_mappings << mapping
+          store_field_mapping(key, mapping)
+        end
 
         def store_field_mapping(key, mapping)
           if key.include?('*')
@@ -123,11 +132,22 @@ module SaxStream
       "#{self.class.name}: #{attributes.inspect}"
     end
 
+    def attributes
+      @attributes ||= {}
+    end
+
+    def relations
+      @relations ||= build_empty_relations
+    end
 
     private
 
-      def attributes
-        @attributes ||= {}
+      def build_empty_relations
+        result = {}
+        self.class.relation_mappings.each do |relation_mapping|
+          result[relation_mapping.name] = []
+        end
+        result
       end
   end
 end

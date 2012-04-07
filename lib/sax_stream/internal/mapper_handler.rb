@@ -76,7 +76,7 @@ module SaxStream
         end
 
         def start_child_node(name, attrs)
-          handler = @mapper_class.child_handler_for(name, @collector, @stack)
+          handler = @mapper_class.child_handler_for(name, @collector, @stack, @current_object)
           if handler
             @stack.push(handler)
             handler.start_element(name, attrs)
