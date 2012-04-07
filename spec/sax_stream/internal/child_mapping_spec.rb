@@ -29,7 +29,7 @@ module SaxStream
         it "passes in the relation as the collector if collect is true" do
           mapper1.stub!(:maps_node?).with('product').and_return(true)
           current_object.stub!(:relations).and_return({'catalogue' => relation})
-          mapping = ChildMapping.new('catalogue', :as => mapper1, :parent_collects => true)
+          mapping = ChildMapping.new('catalogue', :as => [mapper1], :parent_collects => true)
           MapperHandler.should_receive(:new).with(mapper1, relation, handler_stack).and_return(handler)
 
           mapping.handler_for('product', collector, handler_stack, current_object)

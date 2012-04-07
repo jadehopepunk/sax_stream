@@ -1,4 +1,5 @@
 require 'sax_stream/internal/mapper_handler'
+require 'sax_stream/internal/singular_relationship_collector'
 
 module SaxStream
   module Internal
@@ -16,8 +17,7 @@ module SaxStream
         node_name = node_path.split('/').last
         @mapper_classes.each do |mapper_class|
           if mapper_class.maps_node?(node_name)
-            new_handler_collector = @parent_collects ? parent_object.relations[name] : collector
-            return MapperHandler.new(mapper_class, new_handler_collector, handler_stack)
+            return MapperHandler.new(mapper_class, child_collector(parent_object, collector), handler_stack)
           end
         end
         nil
@@ -26,13 +26,30 @@ module SaxStream
       def map_value_onto_object(object, value)
       end
 
+      def build_empty_relation
+        [] if @plural
+      end
+
       private
+
+        def child_collector(parent_object, collector)
+          if @parent_collects
+            if @plural
+              parent_object.relations[name]
+            else
+              SingularRelationshipCollector.new(parent_object, @name)
+            end
+          else
+            collector
+          end
+        end
 
         def arrayify(value)
           value.is_a?(Enumerable) ? value : [value]
         end
 
         def process_conversion_type(as)
+          @plural = as.is_a?(Enumerable)
           @mapper_classes = arrayify(as).compact
           if @mapper_classes.empty?
             raise ":as options for #{@name} field is empty, for child nodes it must be a mapper class or array of mapper classes"

@@ -31,8 +31,11 @@ module SaxStream
       #                          any immediate child of the current node, which is good for polymorphic collections.
       #                    [:as] Required, no default value.
       #                          Needs to be a class which includes SaxStream::Mapper, or an array of such classes.
-      #                          Using an array of classes only makes sense if there is a wildcard in the :to
-      #                          option.
+      #                          Using an array of classes, even if the array only has one item, denotes that an
+      #                          array of related items are expected. Calling @object.relations['name'] will return
+      #                          an array which will be empty if nothing is found. If a singular value is used for
+      #                          the :as option, then the relation will be assumed to be singular, and so it will
+      #                          be nil or the expected class (and will raise an error if multiples are in the file).
       #                    [:parent_collects] Default value: false
       #                          Set to true if the object defining this relationship (ie, the parent
       #                          in the relationship) needs to collect the defined children. If so, the
@@ -150,9 +153,10 @@ module SaxStream
       def build_empty_relations
         result = {}
         self.class.relation_mappings.each do |relation_mapping|
-          result[relation_mapping.name] = []
+          result[relation_mapping.name] = relation_mapping.build_empty_relation
         end
         result
       end
+
   end
 end
