@@ -29,12 +29,14 @@ module SaxStream
         end
       end
 
-      def initialize
-        @elements = []
+      class RootElement < Element
+        def initialize
+          super(nil, [])
+        end
       end
 
-      def top_name
-        @elements.last.name if @elements.last
+      def initialize
+        @elements = []
       end
 
       def push(name, attrs)
@@ -42,18 +44,26 @@ module SaxStream
         # indented_puts "push element #{name}"
       end
 
-      def pop
+      def push_root
+        @elements.push(RootElement.new)
+      end
+
+      def pop(name = nil)
         raise ProgramError, "attempting to pop an empty ElementStack" if @elements.empty?
+        if name && @element_stack.top_name != name
+          raise ProgramError "received popping element for #{name.inspect} but currently processing #{path.inspect}"
+        end
         # indented_puts "pop element"
         @elements.pop
       end
 
       def empty?
-        @elements.empty?
+        @elements.length <= 1
       end
 
       def path
-        @elements.map(&:name).join('/')
+        return nil if @elements.empty?
+        @elements.map(&:name).compact.join('/')
       end
 
       def content
@@ -66,10 +76,16 @@ module SaxStream
 
       def record_characters(string)
         # indented_puts "  record: #{string.inspect}"
-        @elements.last.record_characters(string)
+        if @elements.last
+          @elements.last.record_characters(string)
+        end
       end
 
       private
+
+        def top_name
+          @elements.last.name if @elements.last
+        end
 
         def indented_puts(string)
           indent = ''

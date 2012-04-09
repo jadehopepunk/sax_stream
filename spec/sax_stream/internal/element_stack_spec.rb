@@ -6,18 +6,34 @@ module SaxStream
     let(:subject) { Internal::ElementStack.new }
 
     it "starts empty" do
-      subject.top_name.should be_nil
+      subject.path.should be_nil
     end
 
     it "can push a new element onto the top" do
       subject.push('fat', [])
-      subject.top_name.should == 'fat'
+      subject.path.should == 'fat'
     end
 
     it "can pop a handler and it is no longer top" do
       subject.push('fat', [])
       subject.pop
-      subject.top_name.should be_nil
+      subject.path.should be_nil
+    end
+
+    it "can push the root element onto the top and the path is empty" do
+      subject.push_root
+      subject.path.should == ''
+    end
+
+    it "can pop the root element" do
+      subject.push_root
+      subject.pop
+      subject.path.should == nil
+    end
+
+    it "is empty even with root element" do
+      subject.push_root
+      subject.should be_empty
     end
 
     context "attributes" do

@@ -103,4 +103,29 @@ describe "sax stream parser" do
         %w(m a b c d e f g h i j k l n o p q r s t u v w x y z)
     end
   end
+
+  context "with nested type using immediate content" do
+    class UrlResource
+      include SaxStream::Mapper
+      node 'image'
+      map :url, :to => ''
+    end
+
+    class Listing
+      include SaxStream::Mapper
+      node 'listing'
+      relate :images, :to => 'images/image', :as => [UrlResource], :parent_collects => true
+    end
+
+    it "builds related nodes" do
+      parser = SaxStream::Parser.new(collector, [Listing])
+
+      parser.parse_stream(open_fixture(:image_children))
+      listing = collector.mapped_objects.first
+      listing.relations['images'].map {|image| image['url']}.should == [
+        'http://example.com/image1.jpg',
+        'http://example.com/image2.jpg'
+      ]
+    end
+  end
 end

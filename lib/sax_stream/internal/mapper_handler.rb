@@ -54,9 +54,7 @@ module SaxStream
       end
 
       def characters(string)
-        unless @element_stack.empty?
-          @element_stack.record_characters(string)
-        end
+        @element_stack.record_characters(string)
       end
 
       def current_object
@@ -71,6 +69,7 @@ module SaxStream
             attrs.each do |key, value|
               @mapper_class.map_attribute_onto_object(@current_object, key, value)
             end
+            @element_stack.push_root
             @current_object
           end
         end
@@ -91,7 +90,6 @@ module SaxStream
 
         def pop_element_stack(name)
           unless @element_stack.empty?
-            raise ProgramError "received end element event for #{name.inspect} but currently processing #{@element_stack.top_name.inspect}" unless @element_stack.top_name == name
             @mapper_class.map_element_stack_top_onto_object(@current_object, @element_stack)
             @element_stack.pop
           end
@@ -99,10 +97,12 @@ module SaxStream
 
         def end_current_object(name)
           raise ProgramError unless @current_object
-          raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.class.node_name.inspect}" unless @current_object.class.node_name == name
-          if @current_object.class.should_collect?
+          raise ArgumentError, "received end element event for #{name.inspect} but currently processing #{@current_object.node_name.inspect}" unless @current_object.node_name == name
+          @mapper_class.map_key_onto_object(@current_object, @element_stack.path, @element_stack.content)
+          if @current_object.should_collect?
             @collector << @current_object
           end
+          @element_stack.pop
           @stack.pop(self)
           @current_object = nil
         end

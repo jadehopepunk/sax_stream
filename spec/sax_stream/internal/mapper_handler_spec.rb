@@ -3,11 +3,11 @@ require 'sax_stream/internal/mapper_handler'
 
 module SaxStream
   describe Internal::MapperHandler do
-    let(:new_mapped_object) { double("instance of mapper class") }
+    let(:new_mapped_object) { double("instance of mapper class", :node_name => 'foobar', :should_collect? => false) }
     let(:element_stack)     { Internal::ElementStack.new }
     let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :child_handler_for => nil, :maps_node? => false) }
     let(:collector)         { double("collector") }
-    let(:handler_stack)     { double("HandlerStack") }
+    let(:handler_stack)     { double("HandlerStack", :pop => nil) }
     let(:subject)           { Internal::MapperHandler.new(mapper_class, collector, handler_stack, element_stack) }
 
     context "maps_node" do
@@ -36,6 +36,13 @@ module SaxStream
         it "sets attributes on the mapped object on start" do
           mapper_class.should_receive(:map_attribute_onto_object).with(new_mapped_object, 'a', 'b')
           subject.start_element('foobar', [['a', 'b']])
+        end
+
+        it "maps the element on end" do
+          subject.start_element('foobar')
+          subject.characters('fish')
+          mapper_class.should_receive(:map_key_onto_object).with(new_mapped_object, '', 'fish')
+          subject.end_element('foobar')
         end
       end
 

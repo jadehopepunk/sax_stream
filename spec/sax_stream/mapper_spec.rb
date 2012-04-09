@@ -37,6 +37,12 @@ describe SaxStream::Mapper do
       Sample.map_key_onto_object(object, 'foo/bar/rar', 'testval')
       object.should be_empty
     end
+
+    it "will allow mapping to a key which is empty string, to denote root content" do
+      Sample.map :some_key, :to => ''
+      Sample.map_key_onto_object(object, '', 'testval')
+      object['some_key'].should == 'testval'
+    end
   end
 
   context "mapping related children" do

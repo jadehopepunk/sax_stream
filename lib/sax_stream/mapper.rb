@@ -72,9 +72,11 @@ module SaxStream
       end
 
       def map_key_onto_object(object, key, value)
-        mapping = field_mapping(key)
-        if mapping
-          mapping.map_value_onto_object(object, value)
+        if value
+          mapping = field_mapping(key)
+          if mapping
+            mapping.map_value_onto_object(object, value)
+          end
         end
       end
 
@@ -146,6 +148,14 @@ module SaxStream
 
     def relations
       @relations ||= build_empty_relations
+    end
+
+    def node_name
+      self.class.node_name
+    end
+
+    def should_collect?
+      self.class.should_collect?
     end
 
     private
