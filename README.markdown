@@ -18,7 +18,7 @@ Even slightly invalid XML is likely to cause an immediate exception.
 
 ## Installation
 
-Not yet packed as a gem, install it from github.
+gem install 'sax_stream'
 
 ## Usage
 
