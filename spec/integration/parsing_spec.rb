@@ -59,8 +59,13 @@ describe "sax stream parser" do
       node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
       map :office_name, :to => 'officeDetails/officeName'
+      map :office_street_address, :to => 'officeDetails/addressStreet'
       relate :agent, :to => 'listingAgent', :as => Agent, :parent_collects => true
       relate :images, :to => 'images/img', :as => [Image], :parent_collects => true
+
+      def office_street_address=(value)
+        self['office_street_number'] = value.scan(/^[0-9\\\/\- ]*/).first.strip
+      end
     end
 
     class Residential
@@ -87,6 +92,8 @@ describe "sax stream parser" do
       business = collector.for_type(Business).first
       business['modified_at'].should == 'somedate: 2010-08-02-13:25'
       business['office_name'].should == 'Sydney Premier Real Estate'
+      business['office_street_address'].should be_nil
+      business['office_street_number'].should == '2/8'
       agent = business.relations['agent']
       agent.should_not be_nil
       agent.should be_a(Agent)

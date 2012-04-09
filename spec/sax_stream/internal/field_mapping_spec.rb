@@ -40,6 +40,13 @@ module SaxStream
           FieldMapping.new('foobar', :as => converter).map_value_onto_object(object, nil)
           object['foobar'].should == nil
         end
+
+        it "uses an accessor method if it exists" do
+          object.stub(:respond_to?).with(:foobar=).and_return(true)
+          object.should_receive(:foobar=).with('moose')
+          FieldMapping.new('foobar').map_value_onto_object(object, 'moose')
+          object['foobar'].should == nil
+        end
       end
     end
   end

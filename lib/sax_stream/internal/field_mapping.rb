@@ -11,13 +11,20 @@ module SaxStream
         if value && @parser
           value = @parser.parse(value)
         end
-        object[@name] = value
+        if object.respond_to?(setter_method)
+          object.send(setter_method, value)
+        else
+          object[@name] = value
+        end
       end
 
       def handler_for(name, collector, handler_stack, parent_object)
       end
 
       private
+        def setter_method
+          "#{@name}=".to_sym
+        end
 
         def process_conversion_type(as)
           if as
