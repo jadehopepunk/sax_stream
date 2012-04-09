@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email       = ["craig@craigambrose.com"]
   s.homepage    = "http://github.com/craigambrose/sax_stream"
 
-  s.add_dependency('nokogiri', '>= 1.4.0')
+  s.add_dependency('nokogiri', '>= 1.5.2')
 
   s.files        = Dir.glob("{lib}/**/*") + %w(LICENSE README.markdown)
   s.require_path = 'lib'
