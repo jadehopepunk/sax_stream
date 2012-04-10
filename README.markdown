@@ -74,8 +74,9 @@ The parser object must be supplied with a collector and an array of mapping clas
 
 ```ruby
 require 'sax_stream/parser'
+require 'sax_stream/collectors/naive_collector'
 
-collector = SaxStream::NaiveCollector.new
+collector = SaxStream::Collectors::NaiveCollector.new
 parser = SaxStream::Parser.new(collector, [Product])
 
 parser.parse_stream(File.open('products.xml'))
@@ -89,8 +90,10 @@ To get the full benefits of this library, supply a collector which does somethin
 
 I plan to supply a batching collector which will collect a certain number of objects before passing them off to another collector you supply, so you can save objects in batches of 100 or whatever is optimal for your application.
 
-## Author
+## Credits
 
-Craig Ambrose
+Author: [Craig Ambrose](http://www.craigambrose.com)
 
-http://www.craigambrose.com
+Initial development sponsored by: [List Globally](http://www.listglobally.com)
+
+Ideas taken from lots of other great libraries, including ROXML, Happymapper, Sax Machine, and of course very reliant on Nokogiri.

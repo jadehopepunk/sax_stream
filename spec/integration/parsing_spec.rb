@@ -1,10 +1,10 @@
 require 'integration_spec_helper'
 require 'sax_stream/mapper'
 require 'sax_stream/parser'
-require 'sax_stream/naive_collector'
+require 'sax_stream/collectors/naive_collector'
 
 describe "sax stream parser" do
-  let(:collector) { SaxStream::NaiveCollector.new }
+  let(:collector) { SaxStream::Collectors::NaiveCollector.new }
 
   context "with a single node file" do
     class Product
