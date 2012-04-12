@@ -88,7 +88,15 @@ module SaxStream
       end
 
       def relation_mappings
-        @relation_mappings ||= []
+        (class_relation_mappings + parent_class_values(:relation_mappings, [])).freeze
+      end
+
+      def mappings
+        parent_class_values(:mappings, {}).merge(class_mappings).freeze
+      end
+
+      def regex_mappings
+        (class_regex_mappings + parent_class_values(:regex_mappings, [])).freeze
       end
 
       def should_collect?
@@ -98,15 +106,15 @@ module SaxStream
       private
 
         def store_relation_mapping(key, mapping)
-          relation_mappings << mapping
+          class_relation_mappings << mapping
           store_field_mapping(key, mapping)
         end
 
         def store_field_mapping(key, mapping)
           if key.include?('*')
-            regex_mappings << [Regexp.new(key.gsub('*', '[^/]+')), mapping]
+            class_regex_mappings << [Regexp.new(key.gsub('*', '[^/]+')), mapping]
           else
-            mappings[key] = mapping
+            class_mappings[key] = mapping
           end
         end
 
@@ -121,12 +129,20 @@ module SaxStream
           nil
         end
 
-        def regex_mappings
+        def class_relation_mappings
+          @relation_mappings ||= []
+        end
+
+        def class_regex_mappings
           @regex_mappings ||= []
         end
 
-        def mappings
+        def class_mappings
           @mappings ||= {}
+        end
+
+        def parent_class_values(method_name, default)
+          superclass && superclass.respond_to?(method_name) ? superclass.send(method_name) : default
         end
     end
 

@@ -53,11 +53,13 @@ describe "sax stream parser" do
       map :id, :to => '@id'
     end
 
-    class Business
+    class PropertyBase
       include SaxStream::Mapper
-
-      node 'business'
       map :modified_at, :to => '@modTime', :as => ReaxmlDateTime
+    end
+
+    class Business < PropertyBase
+      node 'business'
       map :office_name, :to => 'officeDetails/officeName'
       map :office_street_address, :to => 'officeDetails/addressStreet'
       relate :agent, :to => 'listingAgent', :as => Agent, :parent_collects => true
@@ -68,9 +70,7 @@ describe "sax stream parser" do
       end
     end
 
-    class Residential
-      include SaxStream::Mapper
-
+    class Residential < PropertyBase
       node 'residential'
     end
 
