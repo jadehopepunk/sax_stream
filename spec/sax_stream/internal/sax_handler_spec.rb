@@ -29,6 +29,12 @@ module SaxStream
         top.should_receive(:end_element).with('article', [['key', 'value']])
         subject.end_element('article', [['key', 'value']])
       end
+
+      it "raises an exception if an error is found" do
+        lambda {
+          subject.error("error text")
+        }.should raise_error(ParsingError)
+      end
     end
   end
 end

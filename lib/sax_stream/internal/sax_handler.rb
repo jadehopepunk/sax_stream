@@ -21,6 +21,10 @@ module SaxStream
         RUBY
         module_eval(code)
       end
+
+      def error(string)
+        raise ParsingError.new(string)
+      end
     end
   end
 end

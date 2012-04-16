@@ -10,9 +10,9 @@ module SaxStream
       @sax_handler = Internal::SaxHandler.new(collector, mappers)
     end
 
-    def parse_stream(io_stream)
+    def parse_stream(io_stream, encoding = 'UTF-8')
       parser = Nokogiri::XML::SAX::Parser.new(@sax_handler)
-      parser.parse(io_stream)
+      parser.parse_io(io_stream, encoding)
     end
   end
 end
