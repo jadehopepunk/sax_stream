@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'sax_stream'
-  s.version = '0.3.1'
+  s.version = '0.3.2'
   s.summary = 'A streaming XML parser which builds objects and passes them to a collecter as they are ready'
   s.description = 'A streaming XML parser which builds objects and passes them to a collecter as they are ready. Based upon Nokogiri SAX parsing functionality.'
   s.authors     = ["Craig Ambrose"]
