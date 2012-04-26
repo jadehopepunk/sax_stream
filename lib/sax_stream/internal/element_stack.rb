@@ -61,6 +61,10 @@ module SaxStream
         @elements.length <= 1
       end
 
+      def length
+        @elements.length
+      end
+
       def path
         return nil if @elements.empty?
         @elements.map(&:name).compact.join('/')

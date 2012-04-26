@@ -128,4 +128,37 @@ describe "sax stream parser" do
       ]
     end
   end
+
+  context "with node containing node of same name" do
+    class Xml2uImage
+      include SaxStream::Mapper
+
+      node 'image'
+
+      map :title, :to => 'alttext'
+      map :number, :to => '@number'
+      map :url, :to => 'image'
+    end
+
+    class Xml2uProperty
+      include SaxStream::Mapper
+
+      node 'property'
+      relate :images, :to => "images/image", :as => [Xml2uImage], :parent_collects => true
+    end
+
+    class Xml2uDocument
+      include SaxStream::Mapper
+
+      node 'document', :collect => false
+      relate :properties, :to => 'Clients/Client/properties/property', :as => [Xml2uProperty]
+    end
+
+    it "builds related node ok" do
+      parser = SaxStream::Parser.new(collector, [Xml2uDocument])
+      parser.parse_stream(open_fixture(:xml2u))
+      property = collector.mapped_objects.first
+      property.relations['images'].first['url'].should == 'http://www.euro-immo.com/photo/euro11496p107602.jpg'
+    end
+  end
 end

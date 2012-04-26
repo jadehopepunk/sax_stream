@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+  <Clients>
+    <Client>
+      <properties>
+        <property>
+          <images>
+            <image number="1">
+              <image>http://www.euro-immo.com/photo/euro11496p107602.jpg</image>
+              <alttext/>
+            </image>
+            <image number="2">
+              <image>http://www.euro-immo.com/photo/euro11496p107612.jpg</image>
+              <alttext/>
+            </image>
+          </images>
+        </property>
+      </properties>
+    </Client>
+  </Clients>
+</document>
