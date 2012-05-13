@@ -3,10 +3,11 @@ require 'nokogiri'
 module SaxStream
   module Internal
     class XmlBuilder
-      def build_xml_for(object)
+      def build_xml_for(object, encoding = nil)
         mappings = object.mappings
 
         doc = Nokogiri::XML::Document.new
+        doc.encoding = (encoding || 'UTF-8')
         base = add_base_element(doc, object)
         object.mappings.each do |mapping|
           add_mapping(doc, base, object, mapping)

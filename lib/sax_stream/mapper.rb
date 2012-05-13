@@ -182,8 +182,8 @@ module SaxStream
       self.class.should_collect?
     end
 
-    def to_xml(builder = Internal::XmlBuilder.new)
-      builder.build_xml_for(self)
+    def to_xml(encoding = 'UTF-8', builder = Internal::XmlBuilder.new)
+      builder.build_xml_for(self, encoding)
     end
 
     private

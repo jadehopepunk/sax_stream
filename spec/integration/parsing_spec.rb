@@ -32,10 +32,9 @@ describe "sax stream parser" do
     end
 
     it "builds the xml from a mapped object" do
-      pending
       product = Product.new
       product.attributes = {'id' => '123', 'status' => 'new', 'name_confirmed' => 'yes', 'name' => 'iPhone 5G'}
-      product.to_xml.should == read_fixture(:simple_product)
+      product.to_xml.strip.should == read_fixture(:simple_product)
     end
   end
 
