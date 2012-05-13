@@ -1,5 +1,5 @@
-require 'sax_stream/internal/field_mapping'
-require 'sax_stream/internal/child_mapping'
+require 'sax_stream/internal/mapping_factory'
+require 'sax_stream/internal/xml_builder'
 
 module SaxStream
   # Include this module to make your class map an XML node. For usage examples, see the READEME.
@@ -15,7 +15,7 @@ module SaxStream
       end
 
       def map(attribute_name, options = {})
-        store_field_mapping(options[:to], Internal::FieldMapping.new(attribute_name, options))
+        store_field_mapping(options[:to], Internal::MappingFactory.build_mapping(attribute_name, options))
       end
 
       # Define a relation to another object which is built from an XML node using another class
@@ -49,7 +49,7 @@ module SaxStream
       #                          or at least what is known about it, but the parent will not be finished being
       #                          parsed. The parent will have already parsed all XML attributes though.
       def relate(attribute_name, options = {})
-        store_relation_mapping(options[:to] || '*', Internal::ChildMapping.new(attribute_name, options))
+        store_relation_mapping(options[:to] || '*', Internal::MappingFactory.build_relation(attribute_name, options))
       end
 
       def node_name
@@ -162,8 +162,16 @@ module SaxStream
       @attributes ||= {}
     end
 
+    def attributes=(value)
+      @attributes = value
+    end
+
     def relations
       @relations ||= build_empty_relations
+    end
+
+    def mappings
+      self.class.mappings.values
     end
 
     def node_name
@@ -172,6 +180,10 @@ module SaxStream
 
     def should_collect?
       self.class.should_collect?
+    end
+
+    def to_xml(builder = Internal::XmlBuilder.new)
+      builder.build_xml_for(self)
     end
 
     private

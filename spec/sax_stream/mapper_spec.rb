@@ -86,4 +86,14 @@ describe SaxStream::Mapper do
       relation.should respond_to(:<<)
     end
   end
+
+  context "building xml" do
+    let(:sample)  { Sample.new }
+    let(:builder) { double("xml builder") }
+
+    it "should ask the XML builder to build XML for itself" do
+      builder.should_receive(:build_xml_for).with(sample).and_return('foobar')
+      sample.to_xml(builder).should == 'foobar'
+    end
+  end
 end

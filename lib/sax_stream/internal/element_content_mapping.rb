@@ -1,6 +1,6 @@
 module SaxStream
   module Internal
-    class FieldMapping
+    class ElementContentMapping
       def initialize(name, options = {})
         @name = name.to_s
         @path = options[:to]
@@ -18,7 +18,35 @@ module SaxStream
         end
       end
 
+      def value_from_object(object)
+        object[@name]
+      end
+
       def handler_for(name, collector, handler_stack, parent_object)
+      end
+
+      def is_attribute?
+        path_parts.last =~ /^@/
+      end
+
+      def is_base_attribute?
+        @path =~ /^@/
+      end
+
+      def is_element?
+        !is_base_attribute?
+      end
+
+      def base_attribute_name
+        @path.sub(/^@/, '')
+      end
+
+      def path_parts
+        @path.split('/')
+      end
+
+      def update_dom_node(object, node)
+        node.content = value_from_object(object)
       end
 
       private
