@@ -48,18 +48,6 @@ module SaxStream
           object['foobar'].should == nil
         end
       end
-
-      context "is attribute" do
-        it "is true if last name part starts with @" do
-          ElementContentMapping.new('foobar', :to => '@foobar').is_attribute?.should be_true
-          ElementContentMapping.new('foobar', :to => 'foo/@bar').is_attribute?.should be_true
-        end
-
-        it "is false if last name part doesnt start with @" do
-          ElementContentMapping.new('foobar', :to => 'foobar').is_attribute?.should be_false
-          ElementContentMapping.new('foobar', :to => 'foo/bar').is_attribute?.should be_false
-        end
-      end
     end
   end
 end

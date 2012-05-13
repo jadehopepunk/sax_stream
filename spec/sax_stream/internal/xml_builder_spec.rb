@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'sax_stream/internal/xml_builder'
 require 'sax_stream/internal/element_content_mapping'
+require 'sax_stream/internal/element_attribute_mapping'
 
 module SaxStream
   module Internal
@@ -8,8 +9,8 @@ module SaxStream
       let(:builder)           { XmlBuilder.new }
       let(:object)            { double("mappable object", :node_name => 'FooBar', :attributes => {}, :mappings => []) }
 
-      def base_attribute_mapping(name, value)
-        ElementContentMapping.new(name, :to => "@#{name}").tap do |result|
+      def attribute_mapping(path, value)
+        ElementAttributeMapping.new(path.gsub(/^@/, ''), :to => path).tap do |result|
           result.stub!(:value_from_object).with(object).and_return(value)
         end
       end
@@ -26,8 +27,7 @@ module SaxStream
         end
 
         it "includes attributes of the main node" do
-          pending
-          object.stub(:mappings => [base_attribute_mapping('a', 'b')])
+          object.stub(:mappings => [attribute_mapping('@a', 'b')])
           builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar a=\"b\"/>\n"
         end
 
@@ -46,15 +46,15 @@ module SaxStream
           builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar>\n  <red>\n    <fox>value</fox>\n    <goose>value2</goose>\n  </red>\n</FooBar>\n"
         end
 
-        # it "includes sub element attribute" do
-        #   object.stub(:mappings => [element_mapping('red/@fox', 'value')])
-        #   builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar>\n  <red fox=\"value\"/>\n</FooBar>\n"
-        # end
-        #
-        # it "includes sub element attribute and value" do
-        #   object.stub(:mappings => [element_mapping('red/@fox', 'value'), element_mapping('red', 'value2')])
-        #   builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar>\n  <red fox=\"value\">value2</red>\n</FooBar>\n"
-        # end
+        it "includes sub element attribute" do
+          object.stub(:mappings => [attribute_mapping('red/@fox', 'value')])
+          builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar>\n  <red fox=\"value\"/>\n</FooBar>\n"
+        end
+
+        it "includes sub element attribute and value" do
+          object.stub(:mappings => [attribute_mapping('red/@fox', 'value'), element_mapping('red', 'value2')])
+          builder.build_xml_for(object).should == "<?xml version=\"1.0\"?>\n<FooBar>\n  <red fox=\"value\">value2</red>\n</FooBar>\n"
+        end
 
       end
     end

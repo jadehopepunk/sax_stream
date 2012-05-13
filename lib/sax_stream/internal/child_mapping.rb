@@ -23,18 +23,6 @@ module SaxStream
         nil
       end
 
-      def is_attribute?
-        false
-      end
-
-      def is_base_attribute?
-        false
-      end
-
-      def is_element?
-        false
-      end
-
       def map_value_onto_object(object, value)
       end
 
