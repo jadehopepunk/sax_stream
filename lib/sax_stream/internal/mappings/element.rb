@@ -1,13 +1,9 @@
+require 'sax_stream/internal/mappings/base'
+
 module SaxStream
   module Internal
     module Mappings
-      class Element
-        def initialize(name, options = {})
-          @name = name.to_s
-          @path = options[:to]
-          process_conversion_type(options[:as])
-        end
-
+      class Element < Base
         def map_value_onto_object(object, value)
           if value && @parser
             value = @parser.parse(value)
@@ -21,13 +17,6 @@ module SaxStream
 
         def value_from_object(object)
           object[@name]
-        end
-
-        def handler_for(name, collector, handler_stack, parent_object)
-        end
-
-        def path_parts
-          @path.split('/')
         end
 
         def find_or_insert_node(doc, base)

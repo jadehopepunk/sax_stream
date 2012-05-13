@@ -1,17 +1,15 @@
 require 'sax_stream/internal/mapper_handler'
 require 'sax_stream/internal/singular_relationship_collector'
+require 'sax_stream/internal/mappings/base'
 
 module SaxStream
   module Internal
     module Mappings
-      class Child
-        attr_reader :name
-
+      class Child < Base
         # Supported options are :to, :as & :parent_collects. See Mapper.relate documentation for more details.
         def initialize(name, options)
-          @name = name.to_s
           @parent_collects = options[:parent_collects]
-          process_conversion_type(options[:as])
+          super
         end
 
         def handler_for(node_path, collector, handler_stack, parent_object)
@@ -22,9 +20,6 @@ module SaxStream
             end
           end
           nil
-        end
-
-        def map_value_onto_object(object, value)
         end
 
         def build_empty_relation
