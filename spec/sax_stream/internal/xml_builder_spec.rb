@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'sax_stream/internal/xml_builder'
-require 'sax_stream/internal/element_content_mapping'
-require 'sax_stream/internal/element_attribute_mapping'
+require 'sax_stream/internal/mappings/element_content'
+require 'sax_stream/internal/mappings/element_attribute'
 
 module SaxStream
   module Internal
@@ -10,13 +10,13 @@ module SaxStream
       let(:object)            { double("mappable object", :node_name => 'FooBar', :attributes => {}, :mappings => []) }
 
       def attribute_mapping(path, value)
-        ElementAttributeMapping.new(path.gsub(/^@/, ''), :to => path).tap do |result|
+        Mappings::ElementAttribute.new(path.gsub(/^@/, ''), :to => path).tap do |result|
           result.stub!(:value_from_object).with(object).and_return(value)
         end
       end
 
       def element_mapping(path, value)
-        ElementContentMapping.new(path.split('/').first, :to => path).tap do |result|
+        Mappings::ElementContent.new(path.split('/').first, :to => path).tap do |result|
           result.stub!(:value_from_object).with(object).and_return(value)
         end
       end

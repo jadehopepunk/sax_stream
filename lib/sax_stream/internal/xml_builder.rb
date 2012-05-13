@@ -22,33 +22,9 @@ module SaxStream
         end
 
         def add_mapping(doc, base, object, mapping)
-          element = find_or_insert_nested_element(doc, base, mapping.path_parts)
+          element = mapping.find_or_insert_node(doc, base)
           mapping.update_dom_node(object, element)
           element
-        end
-
-        def find_or_insert_nested_element(doc, base, path_parts)
-          part = path_parts.shift
-          if part
-            if part =~ /^@/
-              return base
-            else
-              result = find_or_insert_child_element(doc, base, part)
-              find_or_insert_nested_element(doc, result, path_parts)
-            end
-          else
-            base
-          end
-        end
-
-        def find_or_insert_child_element(doc, base, part)
-          base.search(part).first || insert_child_element(doc, base, part)
-        end
-
-        def insert_child_element(doc, base, part)
-          doc.create_element(part).tap do |element|
-            base << element
-          end
         end
     end
   end

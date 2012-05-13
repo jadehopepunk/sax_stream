@@ -108,6 +108,15 @@ describe "sax stream parser" do
       business.relations['images'].map {|image| image['id']}.should ==
         %w(m a b c d e f g h i j k l n o p q r s t u v w x y z)
     end
+
+    it "builds the xml from the mapped object" do
+      pending
+      parser = SaxStream::Parser.new(collector, [PropertyList])
+      parser.parse_stream(open_fixture(:reaxml))
+      business = collector.mapped_objects.first
+      business.to_xml.should == 'fish'
+    end
+
   end
 
   context "with nested type using immediate content" do
