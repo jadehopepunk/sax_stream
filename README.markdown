@@ -9,7 +9,7 @@ The two main goals of this process are:
 1. To avoid loading the entire XML file stream into memory at once.
 2. To avoid loading all the mapped objects into memory simultaneously.
 
-This is currently only for XML importing. Supporting exporting too would be nice if I need it.
+This library handles both importing and exporting, but at present no steps have been taken to conserve memory when exporting XML. Using this library for export is comparable to ROXML or Happymapper (and is heavily based on ROXML's implementation).
 
 ## Status
 

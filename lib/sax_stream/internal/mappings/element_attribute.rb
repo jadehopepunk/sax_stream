@@ -5,7 +5,7 @@ module SaxStream
     module Mappings
       class ElementAttribute < Element
         def update_parent_node(builder, doc, parent, object)
-          parent[base_attribute_name] = value_from_object(object)
+          parent[base_attribute_name] = value_from_object(object).to_s
           parent
         end
 
