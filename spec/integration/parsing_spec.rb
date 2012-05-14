@@ -113,7 +113,7 @@ describe "sax stream parser" do
       parser = SaxStream::Parser.new(collector, [PropertyList])
       parser.parse_stream(open_fixture(:reaxml))
       business = collector.mapped_objects.first
-      business.to_xml.should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<business modTime=\"somedate: 2010-08-02-13:25\">\n  <officeDetails>\n    <officeName>Sydney Premier Real Estate</officeName>\n    <addressStreet></addressStreet>\n  </officeDetails>\n  <name>Sonia Hume</name>\n  <images id=\"z\"/>\n</business>\n"
+      business.to_xml.should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<business modTime=\"somedate: 2010-08-02-13:25\">\n  <officeDetails>\n    <officeName>Sydney Premier Real Estate</officeName>\n    <addressStreet></addressStreet>\n  </officeDetails>\n  <listingAgent>\n    <name>Sonia Hume</name>\n  </listingAgent>\n  <images>\n    <img id=\"m\"/>\n    <img id=\"a\"/>\n    <img id=\"b\"/>\n    <img id=\"c\"/>\n    <img id=\"d\"/>\n    <img id=\"e\"/>\n    <img id=\"f\"/>\n    <img id=\"g\"/>\n    <img id=\"h\"/>\n    <img id=\"i\"/>\n    <img id=\"j\"/>\n    <img id=\"k\"/>\n    <img id=\"l\"/>\n    <img id=\"n\"/>\n    <img id=\"o\"/>\n    <img id=\"p\"/>\n    <img id=\"q\"/>\n    <img id=\"r\"/>\n    <img id=\"s\"/>\n    <img id=\"t\"/>\n    <img id=\"u\"/>\n    <img id=\"v\"/>\n    <img id=\"w\"/>\n    <img id=\"x\"/>\n    <img id=\"y\"/>\n    <img id=\"z\"/>\n  </images>\n</business>\n"
     end
 
     it "builds the XML for a property list" do
@@ -123,7 +123,7 @@ describe "sax stream parser" do
 
       list = PropertyList.new
       list.relations['properties'] = collector.mapped_objects
-      list.to_xml.should == 'redfish'
+      list.to_xml.should == open_fixture(:reaxml_output).read
     end
 
   end

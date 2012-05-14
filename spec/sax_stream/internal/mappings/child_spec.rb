@@ -43,12 +43,14 @@ module SaxStream
         let(:parent_object) { double("parent object") }
         let(:child_object)  { double("child object") }
         let(:child_object2) { double("child object 2") }
+        let(:new_node)      { double("new node") }
 
         context "for singular relation" do
           it "asks the builder to build and supplies the object and parent node" do
             mapping = Mappings::Child.new('image', :to => "images/image", :as => mapper1)
             parent_object.stub!(:relations).and_return({'image' => child_object})
-            builder.should_receive(:build_xml_for).with(child_object, parent_node)
+            builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
+            parent_node.should_receive(:<<).with(new_node)
 
             mapping.update_parent_node(builder, doc, parent_node, parent_object)
           end
@@ -58,8 +60,9 @@ module SaxStream
           it "asks the builder to build for each child" do
             mapping = Mappings::Child.new('image', :to => "images/image", :as => [mapper1])
             parent_object.stub!(:relations).and_return({'image' => [child_object, child_object2]})
-            builder.should_receive(:build_xml_for).with(child_object, parent_node)
-            builder.should_receive(:build_xml_for).with(child_object2, parent_node)
+            builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
+            builder.should_receive(:build_xml_for).with(child_object2, parent_node).and_return(new_node)
+            parent_node.should_receive(:<<).with(new_node).twice
 
             mapping.update_parent_node(builder, doc, parent_node, parent_object)
           end
@@ -67,8 +70,9 @@ module SaxStream
           it "handles wildcard path" do
             mapping = Mappings::Child.new('image', :to => "images/*", :as => [mapper1])
             parent_object.stub!(:relations).and_return({'image' => [child_object, child_object2]})
-            builder.should_receive(:build_xml_for).with(child_object, parent_node)
-            builder.should_receive(:build_xml_for).with(child_object2, parent_node)
+            builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
+            builder.should_receive(:build_xml_for).with(child_object2, parent_node).and_return(new_node)
+            parent_node.should_receive(:<<).with(new_node).twice
 
             mapping.update_parent_node(builder, doc, parent_node, parent_object)
           end

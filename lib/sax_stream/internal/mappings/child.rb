@@ -28,7 +28,7 @@ module SaxStream
 
         def update_parent_node(builder, doc, parent, object)
           value_from_object(object).each do |child_object|
-            builder.build_xml_for(child_object, parent)
+            parent << builder.build_xml_for(child_object, parent)
           end
         end
 
