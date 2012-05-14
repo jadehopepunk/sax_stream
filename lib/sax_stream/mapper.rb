@@ -1,5 +1,6 @@
 require 'sax_stream/internal/mapping_factory'
 require 'sax_stream/internal/xml_builder'
+require 'sax_stream/core_extensions/ordered_hash'
 
 module SaxStream
   # Include this module to make your class map an XML node. For usage examples, see the READEME.
@@ -92,7 +93,7 @@ module SaxStream
       end
 
       def mappings
-        parent_class_values(:mappings, {}).merge(class_mappings).freeze
+        parent_class_values(:mappings, CoreExtensions::OrderedHash.new).merge(class_mappings).freeze
       end
 
       def regex_mappings
@@ -138,7 +139,7 @@ module SaxStream
         end
 
         def class_mappings
-          @mappings ||= {}
+          @mappings ||= CoreExtensions::OrderedHash.new
         end
 
         def parent_class_values(method_name, default)
@@ -159,7 +160,7 @@ module SaxStream
     end
 
     def attributes
-      @attributes ||= {}
+      @attributes ||= CoreExtensions::OrderedHash.new
     end
 
     def attributes=(value)
@@ -189,7 +190,7 @@ module SaxStream
     private
 
       def build_empty_relations
-        result = {}
+        result = CoreExtensions::OrderedHash.new
         self.class.relation_mappings.each do |relation_mapping|
           result[relation_mapping.name] = relation_mapping.build_empty_relation
         end
