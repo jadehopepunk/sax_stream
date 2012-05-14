@@ -48,6 +48,11 @@ module SaxStream
           object['foobar'].should == nil
         end
       end
+
+      context "updating a parent node" do
+        it "wraps in cdata if option specified" do
+        end
+      end
     end
   end
 end

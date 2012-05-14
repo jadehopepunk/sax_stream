@@ -3,7 +3,7 @@
   <business modTime="somedate: 2010-08-02-13:25">
     <officeDetails>
       <officeName><![CDATA[Sydney Premier Real Estate]]></officeName>
-      <addressStreet><![CDATA[2/8 Parliament Place]]></addressStreet>
+      <addressStreet><![CDATA[2/8]]></addressStreet>
     </officeDetails>
     <listingAgent>
       <name>Sonia Hume</name>
@@ -36,9 +36,6 @@
       <img id="y"/>
       <img id="z"/>
     </images>
-    <objects>
-      <floorplan id="1"/>
-    </objects>
   </business>
   <residential modTime="somedate: 2010-06-09-09:15"/>
   <residential modTime="somedate: 2010-06-07-08:13"/>
@@ -46,11 +43,11 @@
   <residential modTime="somedate: 2010-06-08-09:54"/>
   <residential modTime="somedate: 2010-06-09-08:28"/>
   <residential modTime="somedate: 2010-06-10-10:46"/>
-  <residential modTime="somedate: 2010-06-07-08:13">
-  <residential modTime="somedate: 2010-06-07-08:14">
-  <residential modTime="somedate: 2010-06-08-15:55">
-  <residential modTime="somedate: 2010-06-03-15:58">
-  <residential modTime="somedate: 2010-06-04-12:40">
-  <residential modTime="somedate: 2010-06-04-07:52">
-  <residential modTime="somedate: 2010-06-08-13:29">
+  <residential modTime="somedate: 2010-06-07-08:13"/>
+  <residential modTime="somedate: 2010-06-07-08:14"/>
+  <residential modTime="somedate: 2010-06-08-15:55"/>
+  <residential modTime="somedate: 2010-06-03-15:58"/>
+  <residential modTime="somedate: 2010-06-04-12:40"/>
+  <residential modTime="somedate: 2010-06-04-07:52"/>
+  <residential modTime="somedate: 2010-06-08-13:29"/>
 </propertyList>

@@ -16,7 +16,11 @@ module SaxStream
         end
 
         def value_from_object(object)
-          object[@name]
+          if object.respond_to?(@name)
+            object.send(@name)
+          else
+            object[@name]
+          end
         end
 
         def find_or_insert_node(doc, base)
