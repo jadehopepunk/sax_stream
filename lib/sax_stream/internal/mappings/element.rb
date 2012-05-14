@@ -24,30 +24,6 @@ module SaxStream
         end
 
         private
-          def find_or_insert_nested_node(doc, base, remaining_parts)
-            part = remaining_parts.shift
-            if part
-              find_or_insert_path_part(doc, base, part, remaining_parts)
-            else
-              base
-            end
-          end
-
-          def find_or_insert_path_part(doc, base, part, remaining_parts)
-            node = find_or_insert_child_element(doc, base, part)
-            find_or_insert_nested_node(doc, node, remaining_parts)
-          end
-
-          def find_or_insert_child_element(doc, base, part)
-            base.search(part).first || insert_child_element(doc, base, part)
-          end
-
-          def insert_child_element(doc, base, part)
-            doc.create_element(part).tap do |element|
-              base << element
-            end
-          end
-
           def setter_method
             "#{@name}=".to_sym
           end

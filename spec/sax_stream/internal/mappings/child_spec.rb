@@ -35,6 +35,14 @@ module SaxStream
           mapping.handler_for('product', collector, handler_stack, current_object)
         end
       end
+
+      context "when updating parent node" do
+        context "for singular relation" do
+        end
+
+        context "for plural relation" do
+        end
+      end
     end
   end
 end

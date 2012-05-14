@@ -20,6 +20,33 @@ module SaxStream
         def map_value_onto_object(object, value)
         end
 
+        def find_or_insert_parent_node(doc, base)
+          find_or_insert_nested_node(doc, base, path_parts.tap(&:pop))
+        end
+
+        def update_parent_node(builder, doc, parent, object)
+          raise NotImplementedError
+        end
+
+        private
+
+          def find_or_insert_nested_node(doc, base, remaining_parts)
+            part = remaining_parts.shift
+            return base unless part
+            node = find_or_insert_child_element(doc, base, part)
+            find_or_insert_nested_node(doc, node, remaining_parts)
+          end
+
+          def find_or_insert_child_element(doc, base, part)
+            base.search(part).first || insert_child_element(doc, base, part)
+          end
+
+          def insert_child_element(doc, base, part)
+            doc.create_element(part).tap do |element|
+              base << element
+            end
+          end
+
 
       end
     end

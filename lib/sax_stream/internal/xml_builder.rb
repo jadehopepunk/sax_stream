@@ -22,9 +22,8 @@ module SaxStream
         end
 
         def add_mapping(doc, base, object, mapping)
-          element = mapping.find_or_insert_node(doc, base)
-          mapping.update_dom_node(object, element)
-          element
+          parent = mapping.find_or_insert_parent_node(doc, base)
+          mapping.update_parent_node(self, doc, parent, object)
         end
     end
   end

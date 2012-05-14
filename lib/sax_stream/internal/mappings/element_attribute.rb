@@ -4,8 +4,9 @@ module SaxStream
   module Internal
     module Mappings
       class ElementAttribute < Element
-        def update_dom_node(object, node)
-          node[base_attribute_name] = value_from_object(object)
+        def update_parent_node(builder, doc, parent, object)
+          parent[base_attribute_name] = value_from_object(object)
+          parent
         end
 
         private
@@ -13,12 +14,6 @@ module SaxStream
           def base_attribute_name
             path_parts.last.sub(/^@/, '')
           end
-
-          def find_or_insert_path_part(doc, base, part, remaining_parts)
-            return base if remaining_parts.empty?
-            super
-          end
-
       end
     end
   end

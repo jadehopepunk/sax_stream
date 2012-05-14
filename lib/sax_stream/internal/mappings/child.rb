@@ -26,6 +26,10 @@ module SaxStream
           [] if @plural
         end
 
+        def update_parent_node(builder, doc, parent, object)
+          # builder.build_xml_for(object, encoding = nil)
+        end
+
         private
 
           def child_collector(parent_object, collector)
