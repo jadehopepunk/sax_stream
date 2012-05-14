@@ -11,13 +11,13 @@ module SaxStream
 
       def attribute_mapping(path, value)
         Mappings::ElementAttribute.new(path.gsub(/^@/, ''), :to => path).tap do |result|
-          result.stub!(:value_from_object).with(object).and_return(value)
+          result.stub!(:string_value_from_object).with(object).and_return(value)
         end
       end
 
       def element_mapping(path, value)
         Mappings::ElementContent.new(path.split('/').first, :to => path).tap do |result|
-          result.stub!(:value_from_object).with(object).and_return(value)
+          result.stub!(:string_value_from_object).with(object).and_return(value)
         end
       end
 

@@ -15,12 +15,10 @@ module SaxStream
           end
         end
 
-        def value_from_object(object)
-          if object.respond_to?(@name) && !Object.new.respond_to?(@name)
-            object.send(@name)
-          else
-            object[@name]
-          end
+        def string_value_from_object(object)
+          result = raw_value_from_object(object)
+          result = @parser.format(result) if @parser && @parser.respond_to?(:format)
+          result.to_s
         end
 
         def find_or_insert_node(doc, base)
@@ -28,6 +26,14 @@ module SaxStream
         end
 
         private
+          def raw_value_from_object(object)
+            if object.respond_to?(@name) && !Object.new.respond_to?(@name)
+              object.send(@name)
+            else
+              object[@name]
+            end
+          end
+
           def setter_method
             "#{@name}=".to_sym
           end

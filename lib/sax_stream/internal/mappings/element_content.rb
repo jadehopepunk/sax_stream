@@ -11,11 +11,11 @@ module SaxStream
 
         def update_parent_node(builder, doc, parent, object)
           node = find_or_insert_child_element(doc, parent, path_parts.last)
-          value = value_from_object(object)
+          value = string_value_from_object(object)
           if @cdata
-            node.add_child(Nokogiri::XML::CDATA.new(doc, value.to_s))
+            node.add_child(Nokogiri::XML::CDATA.new(doc, value))
           else
-            node.content = value.to_s
+            node.content = value
           end
           node
         end
