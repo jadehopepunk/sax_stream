@@ -109,12 +109,21 @@ describe "sax stream parser" do
         %w(m a b c d e f g h i j k l n o p q r s t u v w x y z)
     end
 
-    it "builds the xml from the mapped object" do
-      pending
+    it "builds the xml from one mapped object" do
       parser = SaxStream::Parser.new(collector, [PropertyList])
       parser.parse_stream(open_fixture(:reaxml))
       business = collector.mapped_objects.first
-      business.to_xml.should == 'fish'
+      business.to_xml.should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<business modTime=\"somedate: 2010-08-02-13:25\">\n  <officeDetails>\n    <officeName>Sydney Premier Real Estate</officeName>\n    <addressStreet></addressStreet>\n  </officeDetails>\n  <name>Sonia Hume</name>\n  <images id=\"z\"/>\n</business>\n"
+    end
+
+    it "builds the XML for a property list" do
+      pending
+      parser = SaxStream::Parser.new(collector, [PropertyList])
+      parser.parse_stream(open_fixture(:reaxml))
+
+      list = PropertyList.new
+      list.relations['properties'] = collector.mapped_objects
+      list.to_xml.should == 'redfish'
     end
 
   end

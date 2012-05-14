@@ -27,10 +27,18 @@ module SaxStream
         end
 
         def update_parent_node(builder, doc, parent, object)
-          # builder.build_xml_for(object, encoding = nil)
+          value_from_object(object).each do |child_object|
+            builder.build_xml_for(child_object, parent)
+          end
         end
 
         private
+
+          def value_from_object(object)
+            result = object.relations[@name]
+            result = [result] unless @plural
+            result
+          end
 
           def child_collector(parent_object, collector)
             if @parent_collects

@@ -50,7 +50,8 @@ module SaxStream
       #                          or at least what is known about it, but the parent will not be finished being
       #                          parsed. The parent will have already parsed all XML attributes though.
       def relate(attribute_name, options = {})
-        store_relation_mapping(options[:to] || '*', Internal::MappingFactory.build_relation(attribute_name, options))
+        options[:to] ||= '*'
+        store_relation_mapping(options[:to], Internal::MappingFactory.build_relation(attribute_name, options))
       end
 
       def node_name
@@ -97,7 +98,9 @@ module SaxStream
       end
 
       def regex_mappings
-        (class_regex_mappings + parent_class_values(:regex_mappings, [])).freeze
+        mappings.reject do |key, mapping|
+          !key.is_a?(Regexp)
+        end
       end
 
       def should_collect?
@@ -112,11 +115,8 @@ module SaxStream
         end
 
         def store_field_mapping(key, mapping)
-          if key.include?('*')
-            class_regex_mappings << [Regexp.new(key.gsub('*', '[^/]+')), mapping]
-          else
-            class_mappings[key] = mapping
-          end
+          key = Regexp.new(key.gsub('*', '[^/]+')) if key.include?('*')
+          class_mappings[key] = mapping
         end
 
         def field_mapping(key)
@@ -132,10 +132,6 @@ module SaxStream
 
         def class_relation_mappings
           @relation_mappings ||= []
-        end
-
-        def class_regex_mappings
-          @regex_mappings ||= []
         end
 
         def class_mappings
@@ -183,8 +179,9 @@ module SaxStream
       self.class.should_collect?
     end
 
-    def to_xml(encoding = 'UTF-8', builder = Internal::XmlBuilder.new)
-      builder.build_xml_for(self, encoding)
+    def to_xml(encoding = 'UTF-8', builder = nil)
+      builder ||= Internal::XmlBuilder.new(:encoding => encoding)
+      builder.build_xml_for(self)
     end
 
     private

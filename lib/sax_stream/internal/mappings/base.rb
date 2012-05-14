@@ -15,6 +15,8 @@ module SaxStream
 
         def path_parts
           @path.split('/')
+        rescue => e
+          raise "could not split #{@path.inspect} for #{@name.inspect}"
         end
 
         def map_value_onto_object(object, value)
