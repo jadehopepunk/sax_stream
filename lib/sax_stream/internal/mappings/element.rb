@@ -16,7 +16,7 @@ module SaxStream
         end
 
         def value_from_object(object)
-          if object.respond_to?(@name)
+          if object.respond_to?(@name) && !Object.new.respond_to?(@name)
             object.send(@name)
           else
             object[@name]

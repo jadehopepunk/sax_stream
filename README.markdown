@@ -68,7 +68,7 @@ class UnusualDate
 end
 ```
 
-### Run the parser
+### Importing XML: Run the parser
 
 The parser object must be supplied with a collector and an array of mapping classes to use.
 
@@ -89,6 +89,10 @@ If you use the example above, you will get some memory benefits over using a lib
 To get the full benefits of this library, supply a collector which does something else with the objects as they are received, such as save them to a database.
 
 I plan to supply a batching collector which will collect a certain number of objects before passing them off to another collector you supply, so you can save objects in batches of 100 or whatever is optimal for your application.
+
+### Exporting XML: Call to_xml
+
+No parser or collector object is used to export XML. Simply call to_xml on the root object. The exporter will expect data to be in the same place it was imported to. It will look in attributes for data for this object, and relations to find associated objects. If you defined custom setters on your object to manipulate the values, then you may need to also supply custom getters.
 
 ## Credits
 
