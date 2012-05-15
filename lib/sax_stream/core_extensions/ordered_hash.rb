@@ -77,6 +77,14 @@ module SaxStream
           self
         end
 
+        def to_hash
+          result = {}
+          self.each do |key, value|
+            to_hash[key] = value
+          end
+          result
+        end
+
         def merge(other)
           hash = self.class.new
 
