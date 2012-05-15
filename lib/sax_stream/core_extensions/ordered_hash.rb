@@ -80,7 +80,7 @@ module SaxStream
         def to_hash
           result = {}
           self.each do |key, value|
-            to_hash[key] = value
+            result[key] = value
           end
           result
         end
