@@ -15,8 +15,9 @@ module SaxStream
         end
       end
 
-      def element_mapping(path, value)
-        Mappings::ElementContent.new(path.split('/').first, :to => path).tap do |result|
+      def element_mapping(path, value, options = {})
+        options[:name] ||= path.split('/').first
+        Mappings::ElementContent.new(options[:name], :to => path).tap do |result|
           result.stub!(:string_value_from_object).with(object).and_return(value)
         end
       end
@@ -29,6 +30,11 @@ module SaxStream
         it "includes attributes of the main node" do
           object.stub(:mappings => [attribute_mapping('@a', 'b')])
           builder.build_xml_for(object).should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FooBar a=\"b\"/>\n"
+        end
+
+        it "includes content for the main node" do
+          object.stub(:mappings => [element_mapping('', 'value', :name => 'url')])
+          builder.build_xml_for(object).should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FooBar>value</FooBar>\n"
         end
 
         it "includes sub element of the main node" do
@@ -55,7 +61,6 @@ module SaxStream
           object.stub(:mappings => [attribute_mapping('red/@fox', 'value'), element_mapping('red', 'value2')])
           builder.build_xml_for(object).should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FooBar>\n  <red fox=\"value\">value2</red>\n</FooBar>\n"
         end
-
       end
     end
   end

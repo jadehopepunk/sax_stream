@@ -14,7 +14,7 @@ module SaxStream
         end
 
         def path_parts
-          @path.split('/')
+          @path.split('/').reject {|part| part.nil? || part == ''}
         rescue => e
           raise "could not split #{@path.inspect} for #{@name.inspect}"
         end
@@ -40,7 +40,10 @@ module SaxStream
           end
 
           def find_or_insert_child_element(doc, base, part)
+            return base if part.nil?
             base.search(part).first || insert_child_element(doc, base, part)
+          rescue Nokogiri::XML::XPath::SyntaxError => e
+            raise "Nokogiri syntax error when searching for path part #{part.inspect} as part of #{@path.inspect} for #{@name.inspect} mapping "
           end
 
           def insert_child_element(doc, base, part)
