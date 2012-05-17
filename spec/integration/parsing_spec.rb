@@ -108,6 +108,7 @@ describe "sax stream parser" do
       business['office_name'].should == 'Sydney Premier Real Estate'
       business['office_street_address'].should be_nil
       business['office_street_number'].should == '2/8'
+      business.attributes.class.should == Hash
       agent = business.relations['agent']
       agent.should_not be_nil
       agent.should be_a(Agent)

@@ -156,7 +156,7 @@ module SaxStream
     end
 
     def attributes
-      @attributes ||= CoreExtensions::OrderedHash.new
+      @attributes ||= {}
     end
 
     def attributes=(value)
@@ -187,7 +187,7 @@ module SaxStream
     private
 
       def build_empty_relations
-        result = CoreExtensions::OrderedHash.new
+        result = {}
         self.class.relation_mappings.each do |relation_mapping|
           result[relation_mapping.name] = relation_mapping.build_empty_relation
         end
