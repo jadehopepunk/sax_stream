@@ -66,8 +66,7 @@ module SaxStream
       end
 
       def path
-        return nil if @elements.empty?
-        @elements.map(&:name).compact.join('/')
+        @elements.inject(""){|s,e| s += "#{e.name}/" unless e.name.nil?;s }.chop unless @elements.empty?
       end
 
       def content
