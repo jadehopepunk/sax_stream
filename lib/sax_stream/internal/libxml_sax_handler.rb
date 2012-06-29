@@ -1,10 +1,12 @@
-require 'nokogiri'
+require 'libxml'
 require 'sax_stream/internal/handler_stack'
 require 'sax_stream/internal/combined_handler'
 
 module SaxStream
   module Internal
-    class SaxHandler < Nokogiri::XML::SAX::Document
+    class LibxmlSaxHandler
+      include LibXML::XML::SaxParser::Callbacks
+
       def initialize(collector, mappers, handler_stack = HandlerStack.new)
         @handler_stack = handler_stack
         mapper_handlers = mappers.map do |mapper|
@@ -13,19 +15,23 @@ module SaxStream
         @handler_stack.root = CombinedHandler.new(@handler_stack, mapper_handlers)
       end
 
-      def start_element(*params)
+      def method_missing(*params)
+        puts "received #{params.inspect}"
+      end
+
+      def on_start_element(*params)
         @handler_stack.top.start_element(*params)
       end
 
-      def end_element(*params)
+      def on_end_element(*params)
         @handler_stack.top.end_element(*params)
       end
 
-      def characters(*params)
+      def on_characters(*params)
         @handler_stack.top.characters(*params)
       end
 
-      def cdata_block(*params)
+      def on_cdata_block(*params)
         @handler_stack.top.cdata_block(*params)
       end
 
