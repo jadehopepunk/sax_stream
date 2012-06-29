@@ -37,9 +37,11 @@ module SaxStream
 
       def initialize
         @elements = []
+        @path = []
       end
 
       def push(name, attrs)
+        @path.push(name) unless name.nil?
         @elements.push(Element.new(name, attrs))
         # indented_puts "push element #{name}"
       end
@@ -54,6 +56,7 @@ module SaxStream
           raise ProgramError "received popping element for #{name.inspect} but currently processing #{path.inspect}"
         end
         # indented_puts "pop element"
+        @path.pop
         @elements.pop
       end
 
@@ -67,7 +70,7 @@ module SaxStream
 
       def path
         return nil if @elements.empty?
-        @elements.map(&:name).compact.join('/')
+        @path.join('/')
       end
 
       def content
@@ -75,7 +78,7 @@ module SaxStream
       end
 
       def attributes
-        @elements.last.attributes(path)
+        @attributes ||= @elements.last.attributes(path)
       end
 
       def record_characters(string)
