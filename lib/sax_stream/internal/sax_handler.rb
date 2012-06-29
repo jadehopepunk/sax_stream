@@ -13,13 +13,20 @@ module SaxStream
         @handler_stack.root = CombinedHandler.new(@handler_stack, mapper_handlers)
       end
 
-      [:start_element, :end_element, :characters, :cdata_block].each do |key|
-        code = <<-RUBY
-        def #{key}(*params)
-          @handler_stack.top.#{key}(*params)
-        end
-        RUBY
-        module_eval(code)
+      def start_element(*params)
+        @handler_stack.top.start_element(*params)
+      end
+
+      def end_element(*params)
+        @handler_stack.top.end_element(*params)
+      end
+
+      def characters(*params)
+        @handler_stack.top.characters(*params)
+      end
+
+      def cdata_block(*params)
+        @handler_stack.top.cdata_block(*params)
       end
 
       def error(string)

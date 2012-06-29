@@ -94,11 +94,11 @@ module SaxStream
       end
 
       def mappings
-        parent_class_values(:mappings, CoreExtensions::OrderedHash.new).merge(class_mappings).freeze
+        @mappings_incuding_inherited ||= parent_class_values(:mappings, CoreExtensions::OrderedHash.new).merge(class_mappings).freeze
       end
 
       def regex_mappings
-        mappings.reject do |key, mapping|
+        @regex_mappings ||= mappings.reject do |key, mapping|
           !key.is_a?(Regexp)
         end
       end
