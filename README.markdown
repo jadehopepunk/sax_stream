@@ -49,7 +49,7 @@ In this example, Product is a mapping class. It maps to an xml node named "produ
 </product>
 ```
 
-All data written to your object from the XML will be string, unless you convert the. To specify a converter on a field mapping, use the :as option.
+All data written to your object from the XML will be a string, unless you convert it. To specify a converter on a field mapping, use the :as option.
 
 ```ruby
   map :created_at, :to => '@createdAt', :as => DateTime
