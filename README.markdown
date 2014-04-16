@@ -40,7 +40,7 @@ class Product
 end
 ```
 
-In this example, Product is a mapping class. It maps to an xml node named "product". Each "attribute" on this product object is defined using the "map" class method. The :to option uses a syntax which is similar to XPath, but not the same. Slashes seperate levels in the XML node heirarchy. If the data is in an attribute, this is designated by the @symbol. Obviously attributes must be at the end of the path, as they have no children. This product class is used to parse XML like this:
+In this example, Product is a mapping class. It maps to an xml node named "product". Each "attribute" on this product object is defined using the "map" class method. The :to option uses a syntax which is similar to XPath, but not the same. Slashes seperate levels in the XML node hierarchy. If the data is in an attribute, this is designated by the @symbol. Obviously, attributes must be at the end of the path, as they have no children. This product class is used to parse XML like this:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -49,7 +49,7 @@ In this example, Product is a mapping class. It maps to an xml node named "produ
 </product>
 ```
 
-All data written to your object from the XML will be string, unless you convert the. To specify a converter on a field mapping, use the :as option.
+All data written to your object from the XML will be a string, unless you convert it. To specify a converter on a field mapping, use the :as option.
 
 ```ruby
   map :created_at, :to => '@createdAt', :as => DateTime
