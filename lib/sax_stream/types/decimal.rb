@@ -3,7 +3,7 @@ module SaxStream
     class Decimal
       def self.parse(value)
         if value
-          value = value.gsub(/[^\.0-9]/, '')
+          value = value.gsub(/[^\-\.0-9]/, '')
           return nil if value == ''
           Float(value)
         end

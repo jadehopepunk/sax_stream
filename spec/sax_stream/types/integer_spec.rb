@@ -23,6 +23,10 @@ describe SaxStream::Types::Integer do
       SaxStream::Types::Integer.parse("1,234").should == 1234
     end
 
+    it "handles negative numbers" do
+      SaxStream::Types::Integer.parse("- 1,234").should == -1234
+    end
+
     it "doesn't include decimal points" do
       SaxStream::Types::Integer.parse("1,234.67").should == 1234
     end

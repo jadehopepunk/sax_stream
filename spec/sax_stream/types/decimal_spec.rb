@@ -26,5 +26,9 @@ describe SaxStream::Types::Decimal do
     it "includes decimal points" do
       SaxStream::Types::Decimal.parse("1,234.67").should == 1234.67
     end
+
+    it "handles negative numbers" do
+      SaxStream::Types::Decimal.parse("-12.0").should == -12.0
+    end
   end
 end
