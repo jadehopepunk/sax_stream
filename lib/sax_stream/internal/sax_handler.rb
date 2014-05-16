@@ -5,6 +5,11 @@ require 'sax_stream/internal/combined_handler'
 module SaxStream
   module Internal
     class SaxHandler < Nokogiri::XML::SAX::Document
+      ERROR_TYPES = {
+        'Document is empty' => nil,
+        'Start tag expected, \'<\' not found' => nil
+      }
+
       def initialize(collector, mappers, handler_stack = HandlerStack.new)
         @handler_stack = handler_stack
         mapper_handlers = mappers.map do |mapper|
@@ -29,8 +34,20 @@ module SaxStream
         @handler_stack.top.cdata_block(*params)
       end
 
-      def error(string)
-        raise ParsingError.new(string)
+      def error(message)
+        klass = error_class(message)
+        if klass
+          raise klass.new(message.inspect)
+        end
+      end
+
+      def error_class(message)
+        message.strip!
+        if ERROR_TYPES.has_key?(message)
+          ERROR_TYPES[message]
+        else
+          ParsingError
+        end
       end
     end
   end
