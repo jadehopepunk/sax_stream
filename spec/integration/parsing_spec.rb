@@ -13,8 +13,10 @@ describe "sax stream parser" do
       node 'product'
       map :id,             :to => '@id'
       map :status,         :to => '@status'
-      map :name_confirmed, :to => 'name/@confirmed'
-      map :name,           :to => 'name'
+      attribute_group :name_stuff do
+        map :name_confirmed, :to => 'name/@confirmed'
+        map :name,           :to => 'name'
+      end
     end
 
     it "builds the mapped object for the node and passes it to the collector" do
@@ -35,6 +37,15 @@ describe "sax stream parser" do
       product = Product.new
       product.attributes = {'id' => '123', 'status' => 'new', 'name_confirmed' => 'yes', 'name' => 'iPhone 5G'}
       product.to_xml.strip.should == read_fixture(:simple_product)
+    end
+
+    it "can fetch attributes in pre-defined named groups" do
+      parser = SaxStream::Parser.new(collector, [Product])
+
+      parser.parse_stream(open_fixture(:simple_product))
+
+      product = collector.mapped_objects.first
+      product.group_attributes(:name_stuff).should == {'name_confirmed' => 'yes', 'name' => 'iPhone 5G'}
     end
   end
 

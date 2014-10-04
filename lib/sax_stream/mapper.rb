@@ -16,7 +16,16 @@ module SaxStream
       end
 
       def map(attribute_name, options = {})
-        store_field_mapping(options[:to], Internal::MappingFactory.build_mapping(attribute_name, options))
+        store_key_for_group attribute_name
+        mapping = Internal::MappingFactory.build_mapping(attribute_name, options)
+        store_field_mapping(options[:to], mapping)
+      end
+
+      def attribute_group(group_name)
+        self.mapping_options = {group_name: group_name}
+        yield
+      ensure
+        clear_mapping_options
       end
 
       # Define a relation to another object which is built from an XML node using another class
@@ -107,6 +116,11 @@ module SaxStream
         @collect
       end
 
+      def group_keys(group_name)
+        @group_keys ||= {}
+        @group_keys[group_name] ||= []
+      end
+
       private
 
         def store_relation_mapping(key, mapping)
@@ -141,6 +155,25 @@ module SaxStream
         def parent_class_values(method_name, default)
           superclass && superclass.respond_to?(method_name) ? superclass.send(method_name) : default
         end
+
+        def mapping_options=(values)
+          @mapping_options = values
+        end
+
+        def clear_mapping_options
+          @mapping_options = nil
+        end
+
+        def with_mapping_options(input)
+          @mapping_options ? input.merge(@mapping_options) : input
+        end
+
+        def store_key_for_group(key)
+          group_name = (@mapping_options || {})[:group_name]
+          if group_name
+            self.group_keys(group_name) << key
+          end
+        end
     end
 
     def []=(key, value)
@@ -161,6 +194,11 @@ module SaxStream
 
     def attributes=(value)
       @attributes = value
+    end
+
+    def group_attributes(group_name)
+      keys = self.class.group_keys(group_name).map(&:to_s)
+      attributes.reject {|key, value| !keys.include?(key) }
     end
 
     def relations
