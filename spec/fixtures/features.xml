@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE propertyList SYSTEM "http://www.listglobally.com/schemas/reaxml_extended.dtd">
+<propertyList date="2010-06-14-08:49:36" username="" password="">
+  <residential modTime="2010-06-09-09:15" status="current">
+    <features>
+      <bedrooms>4</bedrooms>
+      <bathrooms>2</bathrooms>
+      <garages>1</garages>
+      <carports>1</carports>
+      <airConditioning>1</airConditioning>
+      <alarmSystem>0</alarmSystem>
+      <pool>0</pool>
+      <otherFeatures>Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),apple,banana</otherFeatures>
+    </features>
+  </residential>
+</propertyList>

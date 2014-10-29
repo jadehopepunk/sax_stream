@@ -66,6 +66,7 @@ module SaxStream
         def start_current_object(name, attrs)
           if !@current_object && maps_node?(name)
             @current_object = @mapper_class.new
+            @current_object.node_name = name
             attrs.each do |key, value|
               @mapper_class.map_attribute_onto_object(@current_object, key, value)
             end

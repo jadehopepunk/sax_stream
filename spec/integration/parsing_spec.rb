@@ -204,4 +204,38 @@ describe "sax stream parser" do
       property.relations['images'].first['url'].should == 'http://www.euro-immo.com/photo/euro11496p107602.jpg'
     end
   end
+
+  context "with wildcard node names" do
+    class Feature1
+      include SaxStream::Mapper
+      node '*'
+
+      map :value, :to => ''
+    end
+
+    class Residential1
+      include SaxStream::Mapper
+      node 'residential'
+      relate :features, :to => "features/*", :as => [Feature1], :parent_collects => true
+    end
+
+    class PropertyList1
+      include SaxStream::Mapper
+
+      node 'propertyList', :collect => false
+      relate :properties, :as => [Residential1]
+    end
+
+
+    it "builds all related objects" do
+      parser = SaxStream::Parser.new(collector, [PropertyList1])
+
+      parser.parse_stream(open_fixture(:reaxml))
+      listing = collector.mapped_objects.first
+
+      features = listing.relations['features']
+      features.map {|f| f['value']}.should == ["4", "2", "1", "1", "1", "0", "0", "Built-In Wardrobes,Close to Schools,Close to Shops,Close to Transport,Fireplace(s),apple,banana"]
+      features.map(&:node_name).should == ["bedrooms", "bathrooms", "garages", "carports", "airConditioning", "alarmSystem", "pool", "otherFeatures"]
+    end
+  end
 end

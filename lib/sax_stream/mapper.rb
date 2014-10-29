@@ -68,7 +68,7 @@ module SaxStream
       end
 
       def maps_node?(name)
-        @node_name == name
+        @node_name == name || @node_name == '*'
       end
 
       def map_attribute_onto_object(object, key, value)
@@ -210,7 +210,11 @@ module SaxStream
     end
 
     def node_name
-      self.class.node_name
+      @node_name || self.class.node_name
+    end
+
+    def node_name=(value)
+      @node_name = value
     end
 
     def should_collect?
