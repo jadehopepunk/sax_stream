@@ -39,6 +39,8 @@ module SaxStream
       #                          For relations, this can include a wildcard "*" as the last part of the path,
       #                          eg: "product/review/*". If the path is just set to "*" then this will match
       #                          any immediate child of the current node, which is good for polymorphic collections.
+      #                          You can also specify an array of strings to match against multiple paths, for example,
+      #                          to: ['/images/*', 'files/*', 'base_image']
       #                    [:as] Required, no default value.
       #                          Needs to be a class which includes SaxStream::Mapper, or an array of such classes.
       #                          Using an array of classes, even if the array only has one item, denotes that an
@@ -129,8 +131,21 @@ module SaxStream
         end
 
         def store_field_mapping(key, mapping)
-          key = Regexp.new(key.gsub('*', '[^/]+')) if key.include?('*')
+          key = build_key_from_array(key)
           class_mappings[key] = mapping
+        end
+
+        def build_key_from_array(key_array)
+          if key_array.is_a?(Array)
+            joined_key = "(#{key_array.join('|')})".gsub('*', '[^/]+')
+            Regexp.new(joined_key)
+          else
+            build_key_regex(key_array)
+          end
+        end
+
+        def build_key_regex(key)
+          key.include?('*') ? Regexp.new(key.gsub('*', '[^/]+')) : key
         end
 
         def field_mapping(key)

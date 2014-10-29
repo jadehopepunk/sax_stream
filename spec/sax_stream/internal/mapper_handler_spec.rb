@@ -3,7 +3,7 @@ require 'sax_stream/internal/mapper_handler'
 
 module SaxStream
   describe Internal::MapperHandler do
-    let(:new_mapped_object) { double("instance of mapper class", :node_name => 'foobar', :should_collect? => false) }
+    let(:new_mapped_object) { double("instance of mapper class", :node_name => 'foobar', :should_collect? => false, :node_name= => nil) }
     let(:element_stack)     { Internal::ElementStack.new }
     let(:mapper_class)      { double("mapper class", :new => new_mapped_object, :child_handler_for => nil, :maps_node? => false) }
     let(:collector)         { double("collector") }
