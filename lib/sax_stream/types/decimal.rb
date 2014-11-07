@@ -7,6 +7,8 @@ module SaxStream
           return nil if value == ''
           Float(value)
         end
+      rescue ArgumentError
+        nil
       end
     end
   end

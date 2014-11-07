@@ -30,5 +30,10 @@ describe SaxStream::Types::Decimal do
     it "handles negative numbers" do
       SaxStream::Types::Decimal.parse("-12.0").should == -12.0
     end
+
+    it "is nil if the string is not a valid float" do
+      SaxStream::Types::Decimal.parse("fish").should be_nil
+      SaxStream::Types::Decimal.parse("-12.0-0.1").should be_nil
+    end
   end
 end
