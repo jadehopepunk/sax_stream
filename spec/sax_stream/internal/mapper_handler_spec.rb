@@ -71,7 +71,7 @@ module SaxStream
 
           before do
             subject.start_element('foobar')
-            mapper_class.stub!(:child_handler_for).with('post', collector, handler_stack, anything).and_return(post_handler)
+            mapper_class.stub!(:child_handler_for).with('post', anything, collector, handler_stack, anything).and_return(post_handler)
             handler_stack.stub(:push)
           end
 
