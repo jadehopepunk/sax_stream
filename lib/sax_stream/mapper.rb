@@ -1,6 +1,7 @@
 require 'sax_stream/internal/mapping_factory'
 require 'sax_stream/internal/xml_builder'
 require 'sax_stream/core_extensions/ordered_hash'
+require 'sax_stream/internal/field_mappings'
 
 module SaxStream
   # Include this module to make your class map an XML node. For usage examples, see the READEME.
@@ -78,23 +79,23 @@ module SaxStream
       end
 
       def map_element_stack_top_onto_object(object, element_stack)
-        map_key_onto_object(object, element_stack.path, element_stack.content)
+        map_key_onto_object(object, element_stack.path, element_stack.content, element_stack.relative_attributes)
         element_stack.attributes.each do |key, value|
           map_key_onto_object(object, key, value)
         end
       end
 
-      def map_key_onto_object(object, key, value)
+      def map_key_onto_object(object, key, value, attributes = [])
         if value
-          mapping = field_mapping(key)
+          mapping = field_mapping(key, attributes)
           if mapping
             mapping.map_value_onto_object(object, value)
           end
         end
       end
 
-      def child_handler_for(key, collector, handler_stack, current_object)
-        mapping = field_mapping(key)
+      def child_handler_for(key, attributes, collector, handler_stack, current_object)
+        mapping = field_mapping(key, attributes)
         if mapping
           mapping.handler_for(key, collector, handler_stack, current_object)
         end
@@ -108,12 +109,6 @@ module SaxStream
         @mappings_incuding_inherited ||= parent_class_values(:mappings, CoreExtensions::OrderedHash.new).merge(class_mappings).freeze
       end
 
-      def regex_mappings
-        @regex_mappings ||= mappings.reject do |key, mapping|
-          !key.is_a?(Regexp)
-        end
-      end
-
       def should_collect?
         @collect
       end
@@ -123,7 +118,15 @@ module SaxStream
         @group_keys[group_name] ||= []
       end
 
+      def field_mapping(key, attributes = [])
+        field_mappings.field_mapping(key, attributes) || parent_field_mapping(key, attributes)
+      end
+
       private
+
+        def class_mappings
+          field_mappings.class_mappings
+        end
 
         def store_relation_mapping(key, mapping)
           class_relation_mappings << mapping
@@ -131,44 +134,23 @@ module SaxStream
         end
 
         def store_field_mapping(key, mapping)
-          key = build_key_from_array(key)
-          class_mappings[key] = mapping
+          field_mappings.store(key, mapping)
         end
 
-        def build_key_from_array(key_array)
-          if key_array.is_a?(Array)
-            joined_key = "(#{key_array.join('|')})".gsub('*', '[^/]+')
-            Regexp.new(joined_key)
-          else
-            build_key_regex(key_array)
-          end
+        def field_mappings
+          @field_mappings ||= Internal::FieldMappings.new
         end
 
-        def build_key_regex(key)
-          key.include?('*') ? Regexp.new(key.gsub('*', '[^/]+')) : key
-        end
-
-        def field_mapping(key)
-          mappings[key] || regex_field_mapping(key)
-        end
-
-        def regex_field_mapping(key)
-          regex_mappings.each do |regex, mapping|
-            return mapping if regex =~ key
-          end
-          nil
+        def parent_field_mapping(*params)
+          parent_class_values :field_mapping, nil, *params
         end
 
         def class_relation_mappings
           @relation_mappings ||= []
         end
 
-        def class_mappings
-          @mappings ||= CoreExtensions::OrderedHash.new
-        end
-
-        def parent_class_values(method_name, default)
-          superclass && superclass.respond_to?(method_name) ? superclass.send(method_name) : default
+        def parent_class_values(method_name, default = nil, *params)
+          superclass && superclass.respond_to?(method_name) ? superclass.send(method_name, *params) : default
         end
 
         def mapping_options=(values)

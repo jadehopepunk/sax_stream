@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<record>
+  <extraFields>
+    <eField name="No of Lounges" tag="LIVING">1</eField>
+    <eField name="geoLatitude" tag="geoLatitude">-40.61829810</eField>
+    <eField name="geoLongitude" tag="geoLongitude">175.29202050</eField>
+  </extraFields>
+</record>
