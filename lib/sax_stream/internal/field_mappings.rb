@@ -61,7 +61,6 @@ module SaxStream
             class_mappings[parsed_key] = [old_value]
           end
           class_mappings[parsed_key] << new_value
-          puts "stored array for #{parsed_key}"
         else
           class_mappings[parsed_key] = new_value
         end
