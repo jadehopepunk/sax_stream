@@ -79,15 +79,15 @@ module SaxStream
       end
 
       def map_element_stack_top_onto_object(object, element_stack)
-        map_key_onto_object(object, element_stack.path, element_stack.content)
+        map_key_onto_object(object, element_stack.path, element_stack.content, element_stack.relative_attributes)
         element_stack.attributes.each do |key, value|
           map_key_onto_object(object, key, value)
         end
       end
 
-      def map_key_onto_object(object, key, value)
+      def map_key_onto_object(object, key, value, attributes = [])
         if value
-          mapping = field_mapping(key)
+          mapping = field_mapping(key, attributes)
           if mapping
             mapping.map_value_onto_object(object, value)
           end

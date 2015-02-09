@@ -19,6 +19,10 @@ module SaxStream
           end
         end
 
+        def relative_attributes
+          @attrs
+        end
+
         def content
           @content
         end
@@ -75,6 +79,10 @@ module SaxStream
 
       def attributes
         @elements.last.attributes(path)
+      end
+
+      def relative_attributes
+        @elements.last.relative_attributes
       end
 
       def record_characters(string)

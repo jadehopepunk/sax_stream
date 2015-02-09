@@ -1,13 +1,59 @@
 module SaxStream
   module Internal
     class FieldMappings
+      class MappingOptions
+        def initialize(element, key)
+          @element = element
+          @key = key
+          @attributes = parse_attributes(key) if key.is_a?(String)
+        end
+
+        def element
+          @element
+        end
+
+        def allows_mapping?(key, attributes)
+          compare_attributes(attributes)
+        end
+
+        def method_missing(name, *params)
+          @element.send(name, *params)
+        end
+
+        private
+
+        def parse_attributes(key)
+          matches = key.match(/\[(.*)\]/)
+          if matches
+            return hashify_attribute(matches[1])
+          end
+        end
+
+        def hashify_attribute(string)
+          parts = string.split('=')
+          {parts[0] => parts[1]}
+        end
+
+        def compare_attributes(attributes)
+          return true unless @attributes
+
+          attributes_hash = Hash[*attributes.flatten]
+
+          result = !@attributes.detect do |key, value|
+            inner_result = attributes_hash[key] != value
+            inner_result
+          end
+          result
+        end
+      end
+
       def initialize
         @mappings ||= CoreExtensions::OrderedHash.new
       end
 
       def store(key, mapping)
-        key = build_key_from_array(key)
-        class_mappings[key] = mapping
+        parsed_key = build_key_from_array(key)
+        class_mappings[parsed_key] = MappingOptions.new(mapping, key)
       end
 
       def class_mappings
@@ -15,7 +61,9 @@ module SaxStream
       end
 
       def field_mapping(key, attributes = [])
-        find_non_regex_mapping(key) || regex_field_mapping(key)
+        result = find_non_regex_mapping(key) || regex_field_mapping(key)
+        result = (result && result.allows_mapping?(key, attributes)) ? result.element : nil
+        result
       end
 
       private
@@ -47,7 +95,11 @@ module SaxStream
       end
 
       def build_key_regex(key)
-        key.include?('*') ? Regexp.new(key.gsub('*', '[^/]+')) : key
+        if key.include?('*')
+          Regexp.new(key.gsub('*', '[^/]+'))
+        else
+          key.sub(/\[.*\]/, '')
+        end
       end
     end
   end

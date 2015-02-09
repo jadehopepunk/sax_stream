@@ -2,6 +2,7 @@ require 'integration_spec_helper'
 require 'sax_stream/mapper'
 require 'sax_stream/parser'
 require 'sax_stream/collectors/naive_collector'
+require 'sax_stream/types/decimal'
 
 describe "sax stream parser" do
   let(:collector) { SaxStream::Collectors::NaiveCollector.new }
@@ -269,7 +270,8 @@ describe "sax stream parser" do
     class AttributeMapper
       include SaxStream::Mapper
       node 'record'
-      map :latitude, :to => 'extraFields/eField[name=geoLatitude]'
+      map :latitude, :to => 'extraFields/eField[name=geoLatitude]', as: SaxStream::Types::Decimal
+      map :longitude, :to => 'extraFields/eField[name=geoLongitude]', as: SaxStream::Types::Decimal
     end
 
     it "finds latitude" do
@@ -277,7 +279,8 @@ describe "sax stream parser" do
       parser.parse_stream(open_fixture(:extra_fields))
       record = collector.mapped_objects.first
       record.attributes.should == {
-        'latitude' => -40.61829810
+        'latitude' => -40.61829810,
+        'longitude' => 175.2920205
       }
     end
   end
