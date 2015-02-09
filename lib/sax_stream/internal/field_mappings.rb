@@ -53,7 +53,18 @@ module SaxStream
 
       def store(key, mapping)
         parsed_key = build_key_from_array(key)
-        class_mappings[parsed_key] = MappingOptions.new(mapping, key)
+        new_value = MappingOptions.new(mapping, key)
+
+        if class_mappings[parsed_key]
+          unless class_mappings[parsed_key].is_a?(Array)
+            old_value = class_mappings[parsed_key]
+            class_mappings[parsed_key] = [old_value]
+          end
+          class_mappings[parsed_key] << new_value
+          puts "stored array for #{parsed_key}"
+        else
+          class_mappings[parsed_key] = new_value
+        end
       end
 
       def class_mappings
@@ -62,8 +73,15 @@ module SaxStream
 
       def field_mapping(key, attributes = [])
         result = find_non_regex_mapping(key) || regex_field_mapping(key)
-        result = (result && result.allows_mapping?(key, attributes)) ? result.element : nil
-        result
+
+        unless result.is_a?(Array)
+          result = [result]
+        end
+        result.compact!
+
+        result.detect do |one_result|
+          one_result.element if one_result.allows_mapping?(key, attributes)
+        end
       end
 
       private
