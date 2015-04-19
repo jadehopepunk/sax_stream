@@ -12,20 +12,20 @@ module SaxStream
 
     context "maps_node" do
       it "is true if mapper class maps node name" do
-        mapper_class.stub!(:maps_node?).with('client').and_return(true)
-        subject.maps_node?('client').should be_true
+        allow(mapper_class).to receive(:maps_node?).with('client').and_return(true)
+        subject.maps_node?('client').should be_truthy
       end
 
       it "is false if mapper class doesnt map node name" do
-        mapper_class.stub!(:maps_node?).with('client').and_return(false)
-        subject.maps_node?('client').should be_false
+        allow(mapper_class).to receive(:maps_node?).with('client').and_return(false)
+        subject.maps_node?('client').should be_falsey
       end
     end
 
     context "start_element and end_element" do
       context "for main mapper class element" do
         before do
-          mapper_class.stub!(:maps_node?).with('foobar').and_return(true)
+          allow(mapper_class).to receive(:maps_node?).with('foobar').and_return(true)
         end
 
         it "instantiates a mapped object on start" do
@@ -48,8 +48,8 @@ module SaxStream
 
       context "for another element" do
         before do
-          mapper_class.stub!(:maps_node?).with('foobar').and_return(true)
-          mapper_class.stub!(:node_name).and_return('foobar')
+          allow(mapper_class).to receive(:maps_node?).with('foobar').and_return(true)
+          allow(mapper_class).to receive(:node_name).and_return('foobar')
         end
 
         it "maps element stack onto mapped object on end" do
@@ -71,7 +71,7 @@ module SaxStream
 
           before do
             subject.start_element('foobar')
-            mapper_class.stub!(:child_handler_for).with('post', anything, collector, handler_stack, anything).and_return(post_handler)
+            allow(mapper_class).to receive(:child_handler_for).with('post', anything, collector, handler_stack, anything).and_return(post_handler)
             handler_stack.stub(:push)
           end
 

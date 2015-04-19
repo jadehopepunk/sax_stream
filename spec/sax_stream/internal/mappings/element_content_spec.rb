@@ -20,37 +20,31 @@ module SaxStream
         let(:converter) { double("converter") }
 
         it "sets a string value on the object" do
-          Mappings::ElementContent.new('foobar').map_value_onto_object(object, 'moose')
+          Mappings::ElementContent.new('foobar').map_value_onto_object(object, nil, 'moose')
           object['foobar'].should == 'moose'
         end
 
         it "sets a nil value on the object" do
-          Mappings::ElementContent.new('foobar').map_value_onto_object(object, nil)
+          Mappings::ElementContent.new('foobar').map_value_onto_object(object, nil, nil)
           object['foobar'].should == nil
         end
 
         it "uses the :as option to convert the value if it is a string" do
           converter.stub(:parse).with('moose').and_return('rabbit')
-          Mappings::ElementContent.new('foobar', :as => converter).map_value_onto_object(object, 'moose')
+          Mappings::ElementContent.new('foobar', :as => converter).map_value_onto_object(object, nil, 'moose')
           object['foobar'].should == 'rabbit'
         end
 
         it "doesnt try and convert the value if it is nil" do
           converter.should_not_receive(:parse)
-          Mappings::ElementContent.new('foobar', :as => converter).map_value_onto_object(object, nil)
+          Mappings::ElementContent.new('foobar', :as => converter).map_value_onto_object(object, nil, nil)
           object['foobar'].should == nil
         end
 
         it "uses an accessor method if it exists" do
-          object.stub(:respond_to?).with(:foobar=).and_return(true)
           object.should_receive(:foobar=).with('moose')
-          Mappings::ElementContent.new('foobar').map_value_onto_object(object, 'moose')
+          Mappings::ElementContent.new('foobar').map_value_onto_object(object, nil, 'moose')
           object['foobar'].should == nil
-        end
-      end
-
-      context "updating a parent node" do
-        it "wraps in cdata if option specified" do
         end
       end
     end

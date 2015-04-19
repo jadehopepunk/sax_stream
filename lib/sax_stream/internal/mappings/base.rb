@@ -19,7 +19,7 @@ module SaxStream
           raise "could not split #{@path.inspect} for #{@name.inspect}"
         end
 
-        def map_value_onto_object(object, value)
+        def map_value_onto_object(object, key, value)
         end
 
         def find_or_insert_parent_node(doc, base)

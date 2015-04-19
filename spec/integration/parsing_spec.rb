@@ -284,4 +284,36 @@ describe "sax stream parser" do
       }
     end
   end
+
+  context "with a wildcard mapping" do
+    class ProductWildcard1
+      include SaxStream::Mapper
+      node 'product'
+      map_all
+    end
+
+    class ProductWildcard2
+      include SaxStream::Mapper
+      node 'product'
+      map :id, to: '@id'
+      map_all
+    end
+
+    it "grabs all attributes" do
+      parser = SaxStream::Parser.new(collector, [ProductWildcard1])
+
+      parser.parse_stream(open_fixture(:simple_product))
+      product = collector.mapped_objects.first
+      product.attributes.should == {
+          "id"=>"123",
+          "status"=>"new"
+      }
+    end
+
+    it "allows specific mappers to be used first" do
+
+    end
+
+  end
 end
+

@@ -1,3 +1,5 @@
+require 'sax_stream/internal/mappings/wildcard'
+
 module SaxStream
   module Internal
     class FieldMappings
@@ -6,6 +8,7 @@ module SaxStream
           @element = element
           @key = key
           @attributes = parse_attributes(key) if key.is_a?(String)
+          @map_all = false
         end
 
         def element
@@ -78,9 +81,17 @@ module SaxStream
         end
         result.compact!
 
-        result.detect do |one_result|
+        element = result.detect do |one_result|
           one_result.element if one_result.allows_mapping?(key, attributes)
         end
+
+        return element if element
+
+        return @map_all if @map_all && @map_all.allows_mapping?(key, attributes)
+      end
+
+      def set_map_all
+        @map_all = Mappings::Wildcard.new
       end
 
       private

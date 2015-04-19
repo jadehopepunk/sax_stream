@@ -11,7 +11,7 @@ module SaxStream
     context "when element starts" do
       it "finds the first matching mapper handler, pushes it onto the stack, and forwards the message" do
         stack.should_receive(:push).with(handler2)
-        handler2.stub!(:maps_node?).with('article').and_return(true)
+        allow(handler2).to receive(:maps_node?).with('article').and_return(true)
         handler2.should_receive(:start_element).with('article', [['key', 'value']])
 
         subject.start_element('article', [['key', 'value']])

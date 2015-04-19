@@ -4,15 +4,11 @@ module SaxStream
   module Internal
     module Mappings
       class Element < Base
-        def map_value_onto_object(object, value)
+        def map_value_onto_object(object, key, value)
           if value && @parser
             value = @parser.parse(value)
           end
-          if object.respond_to?(setter_method)
-            object.send(setter_method, value)
-          else
-            object[@name] = value
-          end
+          write_value_to_object object, value
         end
 
         def string_value_from_object(object)
@@ -34,8 +30,17 @@ module SaxStream
             end
           end
 
-          def setter_method
-            "#{@name}=".to_sym
+          def setter_method(name = nil)
+            name ||= @name
+            "#{name}=".to_sym
+          end
+
+          def write_value_to_object(object, value, name = nil)
+            if object.respond_to?(setter_method(name))
+              object.send(setter_method(name), value)
+            else
+              object[name || @name] = value
+            end
           end
 
           def process_conversion_type(as)

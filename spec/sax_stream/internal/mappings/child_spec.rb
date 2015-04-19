@@ -19,7 +19,7 @@ module SaxStream
         end
 
         it "builds a new handler if it has a mapper which maps nodes of this name" do
-          mapper1.stub!(:maps_node?).with('product').and_return(true)
+          allow(mapper1).to receive(:maps_node?).with('product').and_return(true)
           mapping = Mappings::Child.new('catalogue', :as => mapper1)
           MapperHandler.should_receive(:new).with(mapper1, collector, handler_stack).and_return(handler)
 
@@ -27,8 +27,8 @@ module SaxStream
         end
 
         it "passes in the relation as the collector if collect is true" do
-          mapper1.stub!(:maps_node?).with('product').and_return(true)
-          current_object.stub!(:relations).and_return({'catalogue' => relation})
+          allow(mapper1).to receive(:maps_node?).with('product').and_return(true)
+          allow(current_object).to receive(:relations).and_return({'catalogue' => relation})
           mapping = Mappings::Child.new('catalogue', :as => [mapper1], :parent_collects => true)
           MapperHandler.should_receive(:new).with(mapper1, relation, handler_stack).and_return(handler)
 
@@ -48,7 +48,7 @@ module SaxStream
         context "for singular relation" do
           it "asks the builder to build and supplies the object and parent node" do
             mapping = Mappings::Child.new('image', :to => "images/image", :as => mapper1)
-            parent_object.stub!(:relations).and_return({'image' => child_object})
+            allow(parent_object).to receive(:relations).and_return({'image' => child_object})
             builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
             parent_node.should_receive(:<<).with(new_node)
 
@@ -59,7 +59,7 @@ module SaxStream
         context "for plural relation" do
           it "asks the builder to build for each child" do
             mapping = Mappings::Child.new('image', :to => "images/image", :as => [mapper1])
-            parent_object.stub!(:relations).and_return({'image' => [child_object, child_object2]})
+            allow(parent_object).to receive(:relations).and_return({'image' => [child_object, child_object2]})
             builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
             builder.should_receive(:build_xml_for).with(child_object2, parent_node).and_return(new_node)
             parent_node.should_receive(:<<).with(new_node).twice
@@ -69,7 +69,7 @@ module SaxStream
 
           it "handles wildcard path" do
             mapping = Mappings::Child.new('image', :to => "images/*", :as => [mapper1])
-            parent_object.stub!(:relations).and_return({'image' => [child_object, child_object2]})
+            allow(parent_object).to receive(:relations).and_return({'image' => [child_object, child_object2]})
             builder.should_receive(:build_xml_for).with(child_object, parent_node).and_return(new_node)
             builder.should_receive(:build_xml_for).with(child_object2, parent_node).and_return(new_node)
             parent_node.should_receive(:<<).with(new_node).twice

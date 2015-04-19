@@ -22,6 +22,10 @@ module SaxStream
         store_field_mapping(options[:to], mapping)
       end
 
+      def map_all
+        field_mappings.set_map_all
+      end
+
       def attribute_group(group_name)
         self.mapping_options = {group_name: group_name}
         yield
@@ -89,7 +93,7 @@ module SaxStream
         if value
           mapping = field_mapping(key, attributes)
           if mapping
-            mapping.map_value_onto_object(object, value)
+            mapping.map_value_onto_object(object, key, value)
           end
         end
       end
