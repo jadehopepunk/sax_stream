@@ -3,6 +3,7 @@ require 'sax_stream/mapper'
 require 'sax_stream/parser'
 require 'sax_stream/collectors/naive_collector'
 require 'sax_stream/types/decimal'
+require 'sax_stream/types/integer'
 
 describe "sax stream parser" do
   let(:collector) { SaxStream::Collectors::NaiveCollector.new }
@@ -295,8 +296,20 @@ describe "sax stream parser" do
     class ProductWildcard2
       include SaxStream::Mapper
       node 'product'
-      map :id, to: '@id'
+      map :id, to: '@id', as: SaxStream::Types::Integer
       map_all
+    end
+
+    class AbstractNumWildcard
+      include SaxStream::Mapper
+      node 'w:abstractNum'
+      map_all recursive: true
+    end
+
+    class Numbering
+      include SaxStream::Mapper
+      node 'w:numbering', :collect => false
+      relate "lists", :as => [AbstractNumWildcard]
     end
 
     it "grabs all attributes" do
@@ -305,15 +318,48 @@ describe "sax stream parser" do
       parser.parse_stream(open_fixture(:simple_product))
       product = collector.mapped_objects.first
       product.attributes.should == {
-          "id"=>"123",
-          "status"=>"new"
+          "id" => "123",
+          "status" => "new"
       }
     end
 
     it "allows specific mappers to be used first" do
+      parser = SaxStream::Parser.new(collector, [ProductWildcard2])
 
+      parser.parse_stream(open_fixture(:simple_product))
+      product = collector.mapped_objects.first
+      product.attributes.should == {
+          "id"=> 123,
+          "status" => "new"
+      }
     end
 
+    it "allows nested nodes to be parsed" do
+      parser = SaxStream::Parser.new(collector, [Numbering])
+
+      parser.parse_stream(open_fixture(:docx_abstract_num))
+      object = collector.mapped_objects.first
+      object.attributes.should == {
+        "w:abstractNumId" => '0',
+        "w:nsid" => {
+          "w:val" => "008C2EB3"
+        },
+        "w:lvl" => {
+          "w:start" => {
+            "w:val" => '1'
+          },
+          "w:lvlJc" => {
+            "w:val" => "left"
+          },
+          "w:rPr" => {
+            "w:rFonts" => {
+              "w:cs" => "Times New Roman"
+            }
+          },
+          "w:ilvl" => '0'
+        }
+      }
+    end
   end
 end
 

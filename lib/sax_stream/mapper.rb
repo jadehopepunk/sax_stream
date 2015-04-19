@@ -22,8 +22,8 @@ module SaxStream
         store_field_mapping(options[:to], mapping)
       end
 
-      def map_all
-        field_mappings.set_map_all
+      def map_all(*params)
+        field_mappings.set_map_all(*params)
       end
 
       def attribute_group(group_name)

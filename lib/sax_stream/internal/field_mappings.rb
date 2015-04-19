@@ -90,8 +90,8 @@ module SaxStream
         return @map_all if @map_all && @map_all.allows_mapping?(key, attributes)
       end
 
-      def set_map_all
-        @map_all = Mappings::Wildcard.new
+      def set_map_all(options = {})
+        @map_all = Mappings::Wildcard.new(options)
       end
 
       private
